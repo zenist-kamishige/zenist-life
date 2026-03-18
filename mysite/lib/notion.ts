@@ -1,7 +1,7 @@
 import { Client } from "@notionhq/client";
 
-const notion = new Client({
-  auth: process.env.NOTION_TOKEN,  // ← ここを修正
+export const notion = new Client({  // ← exportを追加
+  auth: process.env.NOTION_TOKEN,
 });
 
 export async function getPosts() {
