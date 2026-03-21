@@ -87,3 +87,77 @@ footer { background: var(--color-surface); padding: 32px 24px; text-align:center
   .kanji-grid { border: none; }
   .kanji-btn { border: 1px solid var(--color-line); border-right: none; border-bottom: none; }
 }
+/* ── globals.css に追記する部分 ── */
+
+/* キャッチコピー（横書き3行に変更） */
+.catchcopy {
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(16px, 2.5vw, 22px);
+  line-height: 2.2;
+  letter-spacing: 0.08em;
+  color: var(--color-ink);
+  text-align: left;
+}
+
+/* サイト名 */
+.site-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 12px;
+  letter-spacing: 0.35em;
+  color: var(--color-ink-muted);
+  text-transform: lowercase;
+}
+
+/* ── LINE CTAセクション ── */
+#line-cta {
+  padding: 80px 24px;
+  background: var(--color-bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  border-top: 1px solid var(--color-line);
+  border-bottom: 1px solid var(--color-line);
+}
+
+.line-cta-lead {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 15px;
+  color: var(--color-ink);
+  letter-spacing: 0.08em;
+  text-align: center;
+  line-height: 1.8;
+}
+
+.line-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #06C755;
+  color: #fff;
+  text-decoration: none;
+  padding: 14px 36px;
+  border-radius: 4px;
+  font-family: 'Noto Serif JP', serif;
+  font-size: 15px;
+  letter-spacing: 0.06em;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.line-btn:hover {
+  opacity: 0.85;
+  transform: translateY(-1px);
+}
+
+.line-btn-icon {
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 1;
+}
+
+.line-cta-sub {
+  font-size: 11px;
+  color: var(--color-ink-muted);
+  letter-spacing: 0.1em;
+  text-align: center;
+}
