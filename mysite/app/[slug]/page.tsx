@@ -1,42 +1,34 @@
-import { getPosts } from "@/lib/notion";
-import Link from "next/link";
-import KanjiMenu from "@/app/components/KanjiMenu";
+import { getPosts, notion } from "@/lib/notion";
 
-export default async function Home() {
+export default async function PostPage({ params }: any) {
+  const { slug } = await params;
   const posts = await getPosts();
+
+  const post = posts.find(
+    (p: any) => p.properties.Slug.rich_text[0]?.plain_text === slug
+  );
+
+  if (!post) return <div>記事が見つかりません</div>;
+
+  const blocks = await notion.blocks.children.list({
+    block_id: post.id,
+  });
 
   return (
     <main>
-
-      <section id="hero" className="fade-in delay-1">
-        <div className="hero-inner">
-          <span className="site-name">zenist-life</span>
-          <div className="hero-content">
-            <div className="illustration-placeholder">イラスト</div>
-            <p className="catchcopy">
-              なにかをしたい。<br />
-              でも、それがわからない。<br />
-              そもそも、なにができるかもわからない。
-            </p>
-          </div>
-          <div className="scroll-hint">↓</div>
-        </div>
-      </section>
-
-      <KanjiMenu />
-
-      <section id="line-cta">
-        <p className="line-cta-lead">
-          もう少し、話を聞いてみたいと思ったら。
-        </p>
-        
-          href="https://lin.ee/o1SPEu5O"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="line-btn"
-        >
-          <span className="line-btn-icon">＋</span>
-          LINEで話しかけてみる
-        </a>
-        <p className="line-cta-sub">
-          古賀・宗像・福津を中心に活動しています
+      <h1>{(post as any).properties.Title.title[0]?.plain_text}</h1>
+      <div>
+        {blocks.results.map((block: any) => {
+          if (block.type === "paragraph") {
+            return (
+              <p key={block.id}>
+                {block.paragraph.rich_text[0]?.plain_text}
+              </p>
+            );
+          }
+          return null;
+        })}
+      </div>
+    </main>
+  );
+}
