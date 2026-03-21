@@ -18,6 +18,9 @@ export default async function Home() {
               でも、それがわからない。<br />
               そもそも、なにができるかもわからない。
             </p>
+            <Link href="/about" className="catchcopy-btn">
+            もう少し詳しく →
+            </Link>
           </div>
           <div className="scroll-hint">↓</div>
         </div>
