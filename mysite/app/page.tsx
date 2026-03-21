@@ -29,11 +29,6 @@ export default async function Home() {
         <p className="line-cta-lead">
           もう少し、話を聞いてみたいと思ったら。
         </p>
-        
-          href="https://lin.ee/o1SPEu5O"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="line-btn"
        <a href="https://lin.ee/o1SPEu5O" target="_blank" rel="noopener noreferrer" className="line-btn">
         <span className="line-btn-icon">＋</span>
        LINEで話しかけてみる
@@ -41,4 +36,38 @@ export default async function Home() {
         <p className="line-cta-sub">
           古賀・宗像・福津を中心に活動しています
         </p>
-      </
+      </section>
+      <section id="latest-posts" className="fade-in delay-2">
+        <h2 className="latest-title">Latest</h2>
+        <div className="posts-grid">
+          {posts.map((post: any) => {
+            const title = post.properties.Title?.title?.[0]?.plain_text ?? "Untitled";
+            const slug = post.properties.Slug?.rich_text?.[0]?.plain_text ?? "";
+            const date = post.properties.Date?.date?.start;
+            const category = post.properties.Category?.select?.name ?? "";
+            return (
+              <Link key={post.id} href={`/${slug}`} className="post-card">
+                {category && <span className="post-category">{category}</span>}
+                <h3 className="post-title">{title}</h3>
+                {date && <time className="post-date">{date}</time>}
+              </Link>
+            );
+          })}
+        </div>
+      </section>
+
+      <section id="dome-banner" className="fade-in delay-3">
+        <span className="dome-sub">coming soon</span>
+        <h2 className="dome-title">ドームハウス建立プロジェクト</h2>
+        <p className="dome-copy">日土水むらに、みんなが元気になる場所をつくります。</p>
+        <Link href="/dome" className="dome-btn">詳しく見る →</Link>
+      </section>
+
+      <footer>
+        <p className="footer-site">zenist-life</p>
+        <p className="footer-copy">© 2025 zenist-life</p>
+      </footer>
+
+    </main>
+  );
+}
