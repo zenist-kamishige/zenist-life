@@ -34,10 +34,10 @@ export default async function Home() {
           target="_blank"
           rel="noopener noreferrer"
           className="line-btn"
-        >
-          <span className="line-btn-icon">＋</span>
-          LINEで話しかけてみる
-        </a>
+       <a href="https://lin.ee/o1SPEu5O" target="_blank" rel="noopener noreferrer" className="line-btn">
+        <span className="line-btn-icon">＋</span>
+       LINEで話しかけてみる
+      </a>
         <p className="line-cta-sub">
           古賀・宗像・福津を中心に活動しています
         </p>
