@@ -1,4 +1,6 @@
 import { getPosts, notion } from "@/lib/notion";
+import Link from "next/link";
+import ArticleFooter from "@/app/components/ArticleFooter";
 
 export default async function PostPage({ params }: any) {
   const { slug } = await params;
@@ -16,19 +18,32 @@ export default async function PostPage({ params }: any) {
 
   return (
     <main>
-      <h1>{(post as any).properties.Title.title[0]?.plain_text}</h1>
-      <div>
-        {blocks.results.map((block: any) => {
-          if (block.type === "paragraph") {
-            return (
-              <p key={block.id}>
-                {block.paragraph.rich_text[0]?.plain_text}
-              </p>
-            );
-          }
-          return null;
-        })}
-      </div>
+      <section id="article">
+        <div className="article-inner">
+          <h1 className="article-title">
+            {(post as any).properties.Title.title[0]?.plain_text}
+          </h1>
+          <div className="article-body">
+            {blocks.results.map((block: any) => {
+              if (block.type === "paragraph") {
+                return (
+                  <p key={block.id} className="article-paragraph">
+                    {block.paragraph.rich_text[0]?.plain_text}
+                  </p>
+                );
+              }
+              return null;
+            })}
+          </div>
+        </div>
+      </section>
+
+      <ArticleFooter />
+
+      <footer>
+        <p className="footer-site">zenist-life</p>
+        <Link href="/" className="footer-back">← トップへ戻る</Link>
+      </footer>
     </main>
   );
 }
