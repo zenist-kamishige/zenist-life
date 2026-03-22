@@ -1,5 +1,6 @@
 import { getPosts } from "@/lib/notion";
 import Link from "next/link";
+import ArticleFooter from "@/app/components/ArticleFooter";
 
 export default async function AsobuPage() {
   const allPosts = await getPosts();
@@ -32,6 +33,7 @@ export default async function AsobuPage() {
           })}
         </div>
       </section>
+    <ArticleFooter />
       <footer>
         <p className="footer-site">zenist-life</p>
         <Link href="/" className="footer-back">← トップへ戻る</Link>
