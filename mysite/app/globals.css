@@ -409,3 +409,35 @@ footer {
   margin-top: 8px;
 }
 .footer-back:hover { color: var(--color-ink); }
+
+/* ── aboutページ ── */
+#about-hero {
+  min-height: 40svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-bg);
+  padding: 60px 24px;
+  text-align: center;
+}
+.about-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 24px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: var(--color-ink);
+  margin-top: 16px;
+}
+.about-section {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 60px 24px;
+  border-bottom: 1px solid var(--color-line);
+}
+.about-text {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 16px;
+  line-height: 2.4;
+  letter-spacing: 0.06em;
+  color: var(--color-ink);
+}
