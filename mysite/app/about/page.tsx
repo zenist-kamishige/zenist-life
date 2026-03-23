@@ -35,10 +35,9 @@ export default function AboutPage() {
       <section className="about-section">
         <p className="about-text">
           そんな悩みを解決するために<br />
-          スピリチュアルなことを20年探求をしました。<br />
-          このサイトは僕が20年かけて集めてきた情報をあつめたものです。<br />
+          スピリチュアルなことを20年探求をしました。このサイトは僕が20年集めてきた情報です。<br />
           テーマは<br />
-        <strong>「社会不適合者になるためのデータベース」</strong><br /> 
+        <strong>「社会不適合者noためのデータベース」</strong><br /> 
           です。
         </p>
       </section>
