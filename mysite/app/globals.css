@@ -301,6 +301,7 @@ footer {
   #line-cta { padding: 60px 16px; }
   #latest-posts { padding: 60px 16px; }
   #dome-banner { padding: 60px 16px; }
+  .dome-title { font-size: 16px; }
 }
 .catchcopy-btn {
   display: inline-block;
