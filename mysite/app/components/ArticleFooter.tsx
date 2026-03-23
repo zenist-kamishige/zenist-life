@@ -5,7 +5,7 @@ export default function ArticleFooter() {
     <>
       {/* おすすめ教材 */}
       <section id="materials">
-        <p className="materials-lead">もっと深めたい方へ</p>
+        <p className="materials-lead">自分との対話を深めたいかたへ</p>
         <a href="https://iroironoiro.info/l/c/fVqZsCq2/7d6fReGZ" target="_blank" rel="noopener noreferrer" className="materials-btn">
           諸富祥彦のフォーカシング講座プロジェクト →
         </a>
