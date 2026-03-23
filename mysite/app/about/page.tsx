@@ -15,8 +15,10 @@ export default function AboutPage() {
         <p className="about-text">
         なにかをしたい。<br />
         でも、それがなんだかわからない。<br />
-        というか、そもそも自分になにができるんだろう？<br />
-        そんな答えのない悩みをかかえていませんか？
+        というか<br /> 
+        そもそも自分になにができるのか？<br />
+        そんな答えのない<br />
+        悩みをかかえていませんか？
         </p>
       </section>
 
@@ -37,7 +39,7 @@ export default function AboutPage() {
           そんな悩みを解決するために<br />
           スピリチュアルなことを20年探求をしました。このサイトは僕が20年集めてきた情報です。<br />
           テーマは<br />
-        <strong>「社会不適合者noためのデータベース」</strong><br /> 
+        <strong>「社会不適合者のためのデータベース」</strong><br /> 
           です。
         </p>
       </section>
