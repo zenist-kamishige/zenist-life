@@ -11,19 +11,12 @@ export default function ArticleFooter() {
         </a>
       </section>
 
-      {/* セッションメニュー */}
+      {/* セッションメニュー＋LINE */}
       <section id="session-cta">
         <p className="session-lead">一緒に話してみませんか？</p>
         <Link href="/session" className="session-btn">
           セッションメニューを見る →
         </Link>
-      </section>
-
-      {/* LINE CTA */}
-      <section id="line-cta">
-        <p className="line-cta-lead">
-          もう少し、話を聞いてみたいと思ったら。
-        </p>
         <a href="https://lin.ee/o1SPEu5O" target="_blank" rel="noopener noreferrer" className="line-btn">
           <span className="line-btn-icon">＋</span>
           LINEで話しかけてみる
