@@ -2,7 +2,15 @@ import "./globals.css";
 
 export const metadata = {
   title: "zenist-life",
-  description: "呼吸を調え、自分を愛おしむ。",
+  description: "なにかをしたい。でも、それがわからない。そもそも、なにができるかもわからない。",
+  openGraph: {
+    title: "zenist-life",
+    description: "なにかをしたい。でも、それがわからない。そもそも、なにができるかもわからない。",
+    url: "https://zenist-life.vercel.app",
+    siteName: "zenist-life",
+    locale: "ja_JP",
+    type: "website",
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
