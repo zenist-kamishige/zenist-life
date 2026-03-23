@@ -13,19 +13,19 @@ export default function AboutPage() {
 
       <section className="about-section">
         <p className="about-text">
-          {/* ① ここに来た人へのメッセージ */}
+          {/* なにかをしたい。でも、それがなんだかわからない。というか、そもそも自分になにができるんだろう？ そんな答えのない悩みをかかえていませんか？ */}
         </p>
       </section>
 
       <section className="about-section">
         <p className="about-text">
-          {/* ② zenist-lifeがどんな場所か */}
+          {/* その悩みは、じつは宇宙最先端の悩みなのかもです。そんな悩みを解決するには行動することです。といっても大事なのは自分の内側と対話しながら行動すること。自分と対話をすることで自然と行動できるようになります。 */}
         </p>
       </section>
 
       <section className="about-section">
         <p className="about-text">
-          {/* ③ あなた自身のストーリー */}
+          {/* そんな悩みを解決するためにスピリチュアルなことを20年ちかく探求をし続けました。このサイトは僕が20年かけて集めてきた情報をあつめたものです。テーマは「社会不適合者になるためのデータベース」 です。*/}
         </p>
       </section>
 
