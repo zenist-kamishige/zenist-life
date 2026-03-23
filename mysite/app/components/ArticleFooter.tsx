@@ -6,9 +6,17 @@ export default function ArticleFooter() {
       {/* おすすめ教材 */}
       <section id="materials">
         <p className="materials-lead">もっと深めたい方へ</p>
-            <a href="https://iroironoiro.info/l/c/fVqZsCq2/7d6fReGZ" target="_blank" rel="noopener noreferrer" className="materials-btn">
-             諸富祥彦のフォーカシング講座プロジェクト →
-            </a>
+        <a href="https://iroironoiro.info/l/c/fVqZsCq2/7d6fReGZ" target="_blank" rel="noopener noreferrer" className="materials-btn">
+          諸富祥彦のフォーカシング講座プロジェクト →
+        </a>
+      </section>
+
+      {/* セッションメニュー */}
+      <section id="session-cta">
+        <p className="session-lead">一緒に話してみませんか？</p>
+        <Link href="/session" className="session-btn">
+          セッションメニューを見る →
+        </Link>
       </section>
 
       {/* LINE CTA */}

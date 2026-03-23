@@ -339,3 +339,73 @@ footer {
   margin-bottom: 24px;
   color: var(--color-ink);
 }
+/* ── セッションCTA ── */
+#session-cta {
+  padding: 60px 24px;
+  background: var(--color-surface);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  border-top: 1px solid var(--color-line);
+  border-bottom: 1px solid var(--color-line);
+}
+.session-lead {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 15px;
+  color: var(--color-ink);
+  letter-spacing: 0.08em;
+  text-align: center;
+}
+.session-btn {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  color: var(--color-accent);
+  text-decoration: none;
+  border-bottom: 1px solid var(--color-accent);
+  padding-bottom: 2px;
+  transition: opacity 0.2s ease;
+}
+.session-btn:hover { opacity: 0.6; }
+
+/* ── おすすめ教材 ── */
+#materials {
+  padding: 60px 24px;
+  background: var(--color-bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  border-top: 1px solid var(--color-line);
+  border-bottom: 1px solid var(--color-line);
+}
+.materials-lead {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 15px;
+  color: var(--color-ink);
+  letter-spacing: 0.08em;
+  text-align: center;
+}
+.materials-btn {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  color: var(--color-accent);
+  text-decoration: none;
+  border-bottom: 1px solid var(--color-accent);
+  padding-bottom: 2px;
+  transition: opacity 0.2s ease;
+}
+.materials-btn:hover { opacity: 0.6; }
+
+/* ── フッター戻るリンク ── */
+.footer-back {
+  display: block;
+  font-size: 12px;
+  color: var(--color-ink-muted);
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  margin-top: 8px;
+}
+.footer-back:hover { color: var(--color-ink); }
