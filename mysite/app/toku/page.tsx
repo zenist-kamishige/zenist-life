@@ -13,7 +13,7 @@ export default async function TokuPage() {
         <div className="hero-inner">
           <span className="site-name">zenist-life</span>
           <h1 className="category-title">解</h1>
-          <p className="category-yomi">とく</p>
+          <p className="category-yomi">ほどく</p>
           <p className="category-desc">脳・言霊・マインド</p>
         </div>
       </section>

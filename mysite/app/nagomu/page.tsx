@@ -14,7 +14,7 @@ export default async function NagomuPage() {
           <span className="site-name">zenist-life</span>
           <h1 className="category-title">和</h1>
           <p className="category-yomi">なごむ</p>
-          <p className="category-desc">古賀・日土水むら・活動記録</p>
+          <p className="category-desc">日土水むら・活動記録</p>
         </div>
       </section>
       <section id="latest-posts">

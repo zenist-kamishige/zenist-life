@@ -13,7 +13,7 @@ export default async function ShiraPage() {
         <div className="hero-inner">
           <span className="site-name">zenist-life</span>
           <h1 className="category-title">調</h1>
-          <p className="category-yomi">しらべ</p>
+          <p className="category-yomi">ととのえる</p>
           <p className="category-desc">身体・呼吸・食</p>
         </div>
       </section>
