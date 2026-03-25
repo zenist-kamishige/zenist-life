@@ -7,7 +7,7 @@ export default function AboutPage() {
       <section id="about-hero">
         <div className="about-inner">
           <span className="site-name">zenist-life</span>
-          <h1 className="about-title">もう少し、詳しく。</h1>
+          <h1 className="about-title">ようこそ</h1>
         </div>
       </section>
 
