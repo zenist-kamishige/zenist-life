@@ -442,3 +442,8 @@ footer {
   letter-spacing: 0.06em;
   color: var(--color-ink);
 }
+
+#about-cta {
+  text-align: center;
+  padding: 60px 24px;
+}
