@@ -2,10 +2,10 @@
 import Link from "next/link";
 
 const KANJI_MENU = [
-  { kanji: "調", yomi: "しらべ", desc: "身体・呼吸・食", href: "/shira" },
-  { kanji: "解", yomi: "とく", desc: "脳・言霊・マインド", href: "/toku" },
+  { kanji: "調", yomi: "ととのえる", desc: "身体・呼吸・食", href: "/shira" },
+  { kanji: "解", yomi: "ほどく", desc: "脳・言霊・マインド", href: "/toku" },
   { kanji: "遊", yomi: "あそぶ", desc: "星・魂・瞑想", href: "/asobu" },
-  { kanji: "和", yomi: "なごむ", desc: "古賀・日土水むら", href: "/nagomu" },
+  { kanji: "和", yomi: "なごむ", desc: "活動記録", href: "/nagomu" },
 ];
 
 export default function KanjiMenu() {
