@@ -2,6 +2,11 @@ import { getPosts } from "@/lib/notion";
 import Link from "next/link";
 import ArticleFooter from "@/app/components/ArticleFooter";
 
+export const metadata = {
+  title: "和む| zenist-life",
+  description: "日土水むら・田んぼでの活動記録です",
+};
+
 export default async function NagomuPage() {
   const allPosts = await getPosts();
   const posts = allPosts.filter(
@@ -14,7 +19,7 @@ export default async function NagomuPage() {
           <span className="site-name">zenist-life</span>
           <h1 className="category-title">和</h1>
           <p className="category-yomi">なごむ</p>
-          <p className="category-desc">日土水むら・活動記録</p>
+          <p className="category-desc">日土水むら・田んぼでの活動記録です</p>
         </div>
       </section>
       <section id="latest-posts">

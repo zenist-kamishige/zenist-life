@@ -2,6 +2,11 @@ import { getPosts } from "@/lib/notion";
 import Link from "next/link";
 import ArticleFooter from "@/app/components/ArticleFooter";
 
+export const metadata = {
+  title: "遊（あそぶ）| zenist-life",
+  description: "心・魂・瞑想。地球を遊ぶための探求のカテゴリーです。",
+};
+
 export default async function AsobuPage() {
   const allPosts = await getPosts();
   const posts = allPosts.filter(
@@ -33,7 +38,7 @@ export default async function AsobuPage() {
           })}
         </div>
       </section>
-    <ArticleFooter />
+      <ArticleFooter />
       <footer>
         <p className="footer-site">zenist-life</p>
         <Link href="/" className="footer-back">← トップへ戻る</Link>

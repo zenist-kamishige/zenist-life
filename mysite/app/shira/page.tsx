@@ -2,7 +2,12 @@ import { getPosts } from "@/lib/notion";
 import Link from "next/link";
 import ArticleFooter from "@/app/components/ArticleFooter";
 
-export default async function ShiraPage() {
+export const metadata = {
+  title: "ととのえる| zenist-life",
+  description: "呼吸や姿勢、そして習慣をととのえるためのヒントをお届けしています。",
+};
+
+export default async function TotonoePage() {
   const allPosts = await getPosts();
   const posts = allPosts.filter(
     (post: any) => post.properties.Category?.select?.name === "調"
@@ -14,7 +19,7 @@ export default async function ShiraPage() {
           <span className="site-name">zenist-life</span>
           <h1 className="category-title">調</h1>
           <p className="category-yomi">ととのえる</p>
-          <p className="category-desc">身体・呼吸・食</p>
+          <p className="category-desc">呼吸や姿勢、そして習慣をととのえるためのヒントをお届けしています。</p>
         </div>
       </section>
       <section id="latest-posts">

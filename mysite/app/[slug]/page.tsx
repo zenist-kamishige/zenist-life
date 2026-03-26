@@ -1,6 +1,15 @@
-import { getPosts, notion } from "@/lib/notion";
+import { getPosts, getPost, notion } from "@/lib/notion";
 import Link from "next/link";
 import ArticleFooter from "@/app/components/ArticleFooter";
+
+export async function generateMetadata({ params }: any) {
+  const { slug } = await params;
+  const post = await getPost(slug);
+  return {
+    title: post?.title ?? "zenist-life",
+    description: post?.description ?? "",
+  };
+}
 
 export default async function PostPage({ params }: any) {
   const { slug } = await params;
@@ -42,7 +51,9 @@ export default async function PostPage({ params }: any) {
 
       <footer>
         <p className="footer-site">zenist-life</p>
-        <Link href="/" className="footer-back">← トップへ戻る</Link>
+        <Link href="/" className="footer-back">
+          ← トップへ戻る
+        </Link>
       </footer>
     </main>
   );

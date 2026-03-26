@@ -2,6 +2,11 @@ import { getPosts } from "@/lib/notion";
 import Link from "next/link";
 import ArticleFooter from "@/app/components/ArticleFooter";
 
+export const metadata = {
+  title: "解| zenist-life",
+  description: "人生をより良くするための脳科学やスピリチュアルについての情報です。",
+};
+
 export default async function TokuPage() {
   const allPosts = await getPosts();
   const posts = allPosts.filter(
@@ -14,7 +19,7 @@ export default async function TokuPage() {
           <span className="site-name">zenist-life</span>
           <h1 className="category-title">解</h1>
           <p className="category-yomi">ほどく</p>
-          <p className="category-desc">脳・言霊・マインド</p>
+          <p className="category-desc">人生をより良くするための脳科学やスピリチュアルについての情報です。</p>
         </div>
       </section>
       <section id="latest-posts">
