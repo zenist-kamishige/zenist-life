@@ -19,7 +19,7 @@ export default async function AsobuPage() {
           <span className="site-name">zenist-life</span>
           <h1 className="category-title">遊</h1>
           <p className="category-yomi">あそぶ</p>
-          <p className="category-desc">星・魂・瞑想</p>
+          <p className="category-desc">心・魂・瞑想。地球を遊ぶための探求のカテゴリーです。</p>
         </div>
       </section>
       <section id="latest-posts">
