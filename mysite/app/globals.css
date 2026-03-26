@@ -340,6 +340,9 @@ footer {
   margin-bottom: 24px;
   color: var(--color-ink);
 }
+/*スマホ表示*/
+.catchcopy { font-size: 14px; text-align: center; line-height: 1.6; }
+
 /* ── セッションCTA ── */
 #session-cta {
   padding: 60px 24px;
