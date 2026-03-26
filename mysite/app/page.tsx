@@ -16,9 +16,10 @@ export default async function Home() {
       <section id="hero" className="fade-in delay-1">
         <div className="hero-inner">
           <span className="site-name">zenist-life</span>
+          <img src="/hero-main.png" alt="zenist-life hero" className="hero-image" />
           <div className="hero-content">
-            <img src="/hero-main.png" alt="zenist-life hero" className="hero-image" />
-            <p className="catchcopy">
+          <p className="catchcopy">
+        
               なにかをしたい。<br />
               でも、それがわからない。<br />
               そもそも、なにができるかもわからない。
