@@ -1,7 +1,6 @@
 import { getPosts } from "@/lib/notion";
 import Link from "next/link";
 import ArticleFooter from "@/app/components/ArticleFooter";
-
 export const metadata = {
   title: "遊（あそぶ）| zenist-life",
   description: "心・魂・瞑想。地球を遊ぶための探求のカテゴリーです。",

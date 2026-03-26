@@ -2,6 +2,11 @@ import { getPosts } from "@/lib/notion";
 import Link from "next/link";
 import KanjiMenu from "@/app/components/KanjiMenu";
 
+export const metadata = {
+  title: "zenist-life | 福岡のスピリチュアルカウンセリング・コーチング",
+  description: "古賀・宗像・福津を中心に活動。占い・スピリチュアルカウンセリング・コーチングを通じて、あなたの「なりたい自分」へのヒントをお届けします。",
+};
+
 export default async function Home() {
   const posts = await getPosts();
 
