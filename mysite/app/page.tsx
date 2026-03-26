@@ -1,6 +1,7 @@
 import { getPosts } from "@/lib/notion";
 import Link from "next/link";
 import KanjiMenu from "@/app/components/KanjiMenu";
+import Image from "next/image";
 
 export const metadata = {
   title: "zenist-life | 福岡のスピリチュアルカウンセリング・コーチング",
@@ -16,7 +17,7 @@ export default async function Home() {
       <section id="hero" className="fade-in delay-1">
         <div className="hero-inner">
           <span className="site-name">zenist-life</span>
-          <img src="/hero-main.png" alt="zenist-life hero" className="hero-image" />
+          <Image src="/hero-main.png" alt="zenist-life hero" width={1200} height={630} className="hero-image" />
           <div className="hero-content">
           <p className="catchcopy">
         
