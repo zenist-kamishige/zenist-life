@@ -17,7 +17,7 @@ export default async function Home() {
         <div className="hero-inner">
           <span className="site-name">zenist-life</span>
           <div className="hero-content">
-            <div className="illustration-placeholder">イラスト</div>
+            <img src="/hero-main.png" alt="zenist-life hero" className="hero-image" />
             <p className="catchcopy">
               なにかをしたい。<br />
               でも、それがわからない。<br />
