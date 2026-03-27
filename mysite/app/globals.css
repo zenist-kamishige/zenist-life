@@ -340,11 +340,10 @@ footer {
   margin-bottom: 24px;
   color: var(--color-ink);
 }
-/*スマホ表示*/
-.catchcopy { font-size: 14px; text-align: center; line-height: 1.6; }
-.article-thumbnail-img {
-    height: 180px;
-  }
+@media (max-width: 640px) {
+  .catchcopy { font-size: 14px; text-align: center; line-height: 1.6; }
+  .article-thumbnail-img { height: 180px; }
+}
 
 /* ── セッションCTA ── */
 #session-cta {
@@ -487,9 +486,6 @@ footer {
   letter-spacing: 0.08em;
 }
 /* ── 記事サムネイル ── */
-.article-thumbnail {
-  margin-bottom: 48px;
-}
 .article-thumbnail {
   margin-bottom: 48px;
 }
