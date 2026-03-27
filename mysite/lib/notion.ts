@@ -70,4 +70,3 @@ export async function getPost(slug: string) {
 
   return { id: page.id, title, description, category, thumbnail, slug };
 }
-}
