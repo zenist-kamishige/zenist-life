@@ -342,8 +342,6 @@ footer {
 }
 @media (max-width: 640px) {
   .catchcopy { font-size: 14px; text-align: center; line-height: 1.6; }
-  .article-thumbnail-img { height: 180px;
-   max-width: 100%; }
 }
 
 /* ── セッションCTA ── */
@@ -493,8 +491,9 @@ footer {
 .article-thumbnail-img {
   width: 100%;
   max-width: 600px;
-  height: 250px;
+  height: 200px;
   object-fit: cover;
+  object-position: center top;
   border-radius: 4px;
   display: block;
   margin: 0 auto;
