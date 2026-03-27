@@ -65,5 +65,9 @@ export async function getPost(slug: string) {
   const category =
     props["Category"]?.select?.name ?? "";
 
-  return { id: page.id, title, description, category, slug };
+  const thumbnail =
+    props["Thumbnail"]?.url ?? "";
+
+  return { id: page.id, title, description, category, thumbnail, slug };
+}
 }

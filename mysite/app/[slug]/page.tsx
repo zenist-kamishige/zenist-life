@@ -29,7 +29,9 @@ export default async function PostPage({ params }: any) {
 
   if (!post) return <div>記事が見つかりません</div>;
 
-  const category = (post as any).properties.Category?.select?.name ?? "";
+ const category = (post as any).properties.Category?.select?.name ?? "";
+  const postData = await getPost(slug);
+  const thumbnail = postData?.thumbnail ?? "";
   const bgImage = categoryImages[category] ?? "/hero-main.png";
 
   const blocks = await notion.blocks.children.list({
@@ -48,6 +50,12 @@ export default async function PostPage({ params }: any) {
 
       <section id="article">
         <div className="article-inner">
+        {thumbnail && (
+  <div className="article-thumbnail">
+    <Image src={thumbnail} alt="" width={800} height={450} className="article-thumbnail-img" />
+  </div>
+)}
+<div className="article-body"></div>
           <div className="article-body">
             {blocks.results.map((block: any) => {
               if (block.type === "paragraph") {
