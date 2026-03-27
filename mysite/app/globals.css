@@ -7,8 +7,8 @@
 }
 
 :root {
-  --color-bg:        #F7F4EF;
-  --color-surface:   #EFEBE3;
+  --color-bg:        #F0EBE3;
+  --color-surface:   #E8E0D5;
   --color-ink:       #2C2825;
   --color-ink-muted: #7A7069;
   --color-accent:    #8B6F47;
@@ -487,8 +487,15 @@ footer {
 .article-thumbnail {
   margin-bottom: 48px;
 }
+.article-thumbnail {
+  margin-bottom: 48px;
+}
 .article-thumbnail-img {
   width: 100%;
-  height: auto;
+  max-width: 600px;
+  height: 250px;
+  object-fit: cover;
   border-radius: 4px;
+  display: block;
+  margin: 0 auto;
 }
