@@ -499,3 +499,7 @@ footer {
   display: block;
   margin: 0 auto;
 }
+
+.article-image-wrap {
+  margin: 32px 0;
+}
