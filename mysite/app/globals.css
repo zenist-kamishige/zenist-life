@@ -342,6 +342,9 @@ footer {
 }
 /*スマホ表示*/
 .catchcopy { font-size: 14px; text-align: center; line-height: 1.6; }
+.article-thumbnail-img {
+    height: 180px;
+  }
 
 /* ── セッションCTA ── */
 #session-cta {
