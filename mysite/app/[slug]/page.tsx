@@ -68,8 +68,21 @@ export default async function PostPage({ params }: any) {
                 return <span key={i} style={{ color: "#C0392B" }}>{text.plain_text}</span>;
                 }
               if (text.annotations.color === "blue") {
-                return <span key={i} style={{ color: "#2980B9" }}>{text.plain_text}</span>;
-                }   
+                return <span key={i} style={{ color: "#2980B9" }}>{text.plain_text}</span>
+                }
+                if (block.type === "heading_2") {
+                return (
+                <h2 key={block.id} className="article-heading2">
+                {block.heading_2.rich_text[0]?.plain_text}
+                </h2>);
+                }
+                if (block.type === "heading_3") {
+                return (
+                <h3 key={block.id} className="article-heading3">
+                {block.heading_3.rich_text[0]?.plain_text}
+                </h3>
+                  );
+                }
 return <span key={i}>{text.plain_text}</span>;
               })}
               </p>

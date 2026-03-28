@@ -507,3 +507,26 @@ footer {
   font-weight: 700;
   color: var(--color-ink);
 }
+/* ── 記事見出し ── */
+.article-heading2 {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.8;
+  letter-spacing: 0.06em;
+  margin-top: 48px;
+  margin-bottom: 24px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--color-line);
+  color: var(--color-ink);
+}
+.article-heading3 {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.8;
+  letter-spacing: 0.06em;
+  margin-top: 32px;
+  margin-bottom: 16px;
+  color: var(--color-accent);
+}
