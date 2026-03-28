@@ -63,8 +63,14 @@ export default async function PostPage({ params }: any) {
                 {block.paragraph.rich_text.map((text: any, i: number) => {
               if (text.annotations.bold) {
                 return <strong key={i}>{text.plain_text}</strong>;
-              }
-              return <span key={i}>{text.plain_text}</span>;
+                }
+              if (text.annotations.color === "red") {
+                return <span key={i} style={{ color: "#C0392B" }}>{text.plain_text}</span>;
+                }
+              if (text.annotations.color === "blue") {
+                return <span key={i} style={{ color: "#2980B9" }}>{text.plain_text}</span>;
+                }   
+return <span key={i}>{text.plain_text}</span>;
               })}
               </p>
   );
