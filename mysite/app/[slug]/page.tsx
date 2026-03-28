@@ -1,4 +1,4 @@
-import { getPosts, getPost, notion } from "@/lib/notion";
+import { getPost, notion } from "@/lib/notion";
 import Link from "next/link";
 import Image from "next/image";
 import ArticleFooter from "@/app/components/ArticleFooter";
@@ -21,21 +21,16 @@ const categoryImages: Record<string, string> = {
 
 export default async function PostPage({ params }: any) {
   const { slug } = await params;
-  const posts = await getPosts();
-
-  const post = posts.find(
-    (p: any) => p.properties.Slug.rich_text[0]?.plain_text === slug
-  );
-
-  if (!post) return <div>記事が見つかりません</div>;
-
-  const category = (post as any).properties.Category?.select?.name ?? "";
   const postData = await getPost(slug);
-  const thumbnail = postData?.thumbnail ?? "";
+
+  if (!postData) return <div>記事が見つかりません</div>;
+
+  const category = postData.category;
+  const thumbnail = postData.thumbnail;
   const bgImage = categoryImages[category] ?? "/hero-main.png";
 
   const blocks = await notion.blocks.children.list({
-    block_id: post.id,
+    block_id: postData.id,
   });
 
   return (
@@ -43,7 +38,7 @@ export default async function PostPage({ params }: any) {
       <section id="article-hero" style={{ backgroundImage: `url(${bgImage})` }}>
         <div className="article-hero-overlay">
           <h1 className="article-hero-title">
-            {(post as any).properties.Title.title[0]?.plain_text}
+            {postData.title}
           </h1>
         </div>
       </section>
