@@ -65,11 +65,13 @@ export default async function PostPage({ params }: any) {
                       if (text.annotations.color === "blue") {
                         return <span key={i} style={{ color: "#2980B9" }}>{text.plain_text}</span>;
                       }
-                      return <span key={i}>{text.plain_text}</span>;
-                    })}
-                  </p>
-                );
-              }
+                      if (text.href) {
+                        return (
+                      <a key={i} href={text.href} target="_blank" rel="noopener noreferrer">
+                    {text.plain_text}
+                      </a>
+                        );
+                      }
               if (block.type === "heading_2") {
                 return (
                   <h2 key={block.id} className="article-heading2">
