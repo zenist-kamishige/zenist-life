@@ -59,35 +59,36 @@ export default async function PostPage({ params }: any) {
             {blocks.results.map((block: any) => {
               if (block.type === "paragraph") {
                 return (
-                <p key={block.id} className="article-paragraph">
-                {block.paragraph.rich_text.map((text: any, i: number) => {
-              if (text.annotations.bold) {
-                return <strong key={i}>{text.plain_text}</strong>;
-                }
-              if (text.annotations.color === "red") {
-                return <span key={i} style={{ color: "#C0392B" }}>{text.plain_text}</span>;
-                }
-              if (text.annotations.color === "blue") {
-                return <span key={i} style={{ color: "#2980B9" }}>{text.plain_text}</span>
-                }
-                if (block.type === "heading_2") {
+                  <p key={block.id} className="article-paragraph">
+                    {block.paragraph.rich_text.map((text: any, i: number) => {
+                      if (text.annotations.bold) {
+                        return <strong key={i}>{text.plain_text}</strong>;
+                      }
+                      if (text.annotations.color === "red") {
+                        return <span key={i} style={{ color: "#C0392B" }}>{text.plain_text}</span>;
+                      }
+                      if (text.annotations.color === "blue") {
+                        return <span key={i} style={{ color: "#2980B9" }}>{text.plain_text}</span>;
+                      }
+                      return <span key={i}>{text.plain_text}</span>;
+                    })}
+                  </p>
+                );
+              }
+              if (block.type === "heading_2") {
                 return (
-                <h2 key={block.id} className="article-heading2">
-                {block.heading_2.rich_text[0]?.plain_text}
-                </h2>);
-                }
-                if (block.type === "heading_3") {
+                  <h2 key={block.id} className="article-heading2">
+                    {block.heading_2.rich_text[0]?.plain_text}
+                  </h2>
+                );
+              }
+              if (block.type === "heading_3") {
                 return (
-                <h3 key={block.id} className="article-heading3">
-                {block.heading_3.rich_text[0]?.plain_text}
-                </h3>
-                  );
-                }
-return <span key={i}>{text.plain_text}</span>;
-              })}
-              </p>
-  );
-}
+                  <h3 key={block.id} className="article-heading3">
+                    {block.heading_3.rich_text[0]?.plain_text}
+                  </h3>
+                );
+              }
               if (block.type === "image") {
                 const url = block.image.type === "external"
                   ? block.image.external.url
