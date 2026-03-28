@@ -59,11 +59,16 @@ export default async function PostPage({ params }: any) {
             {blocks.results.map((block: any) => {
               if (block.type === "paragraph") {
                 return (
-                  <p key={block.id} className="article-paragraph">
-                    {block.paragraph.rich_text[0]?.plain_text}
-                  </p>
-                );
+                <p key={block.id} className="article-paragraph">
+                {block.paragraph.rich_text.map((text: any, i: number) => {
+              if (text.annotations.bold) {
+                return <strong key={i}>{text.plain_text}</strong>;
               }
+              return <span key={i}>{text.plain_text}</span>;
+              })}
+              </p>
+  );
+}
               if (block.type === "image") {
                 const url = block.image.type === "external"
                   ? block.image.external.url

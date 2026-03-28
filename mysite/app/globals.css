@@ -502,3 +502,8 @@ footer {
 .article-image-wrap {
   margin: 32px 0;
 }
+
+.article-paragraph strong {
+  font-weight: 700;
+  color: var(--color-ink);
+}
