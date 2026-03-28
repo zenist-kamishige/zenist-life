@@ -43,6 +43,13 @@ export default function AboutPage() {
           です。
         </p>
       </section>
+      <section className="about-section">
+        <Link href="/s-futeki">
+          <div className="article-link-card">
+            社会不適合者ってどういうこと？
+          </div>
+        </Link>
+      </section>
 
       <section id="about-cta">
         <p className="line-cta-lead">話を聞いてみたいと思ったら。</p>
