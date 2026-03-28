@@ -63,4 +63,56 @@ export default async function PostPage({ params }: any) {
                         return <span key={i} style={{ color: "#C0392B" }}>{text.plain_text}</span>;
                       }
                       if (text.annotations.color === "blue") {
-                        return <span key={i} style={{ color: "#2980B9" }}>{text.
+                        return <span key={i} style={{ color: "#2980B9" }}>{text.plain_text}</span>;
+                      }
+                      if (text.href) {
+                        return (
+                          <a key={i} href={text.href} target="_blank" rel="noopener noreferrer">
+                            {text.plain_text}
+                          </a>
+                        );
+                      }
+                      return <span key={i}>{text.plain_text}</span>;
+                    })}
+                  </p>
+                );
+              }
+              if (block.type === "heading_2") {
+                return (
+                  <h2 key={block.id} className="article-heading2">
+                    {block.heading_2.rich_text[0]?.plain_text}
+                  </h2>
+                );
+              }
+              if (block.type === "heading_3") {
+                return (
+                  <h3 key={block.id} className="article-heading3">
+                    {block.heading_3.rich_text[0]?.plain_text}
+                  </h3>
+                );
+              }
+              if (block.type === "image") {
+                const url = block.image.type === "external"
+                  ? block.image.external.url
+                  : block.image.file.url;
+                return (
+                  <div key={block.id} className="article-image-wrap">
+                    <Image src={url} alt="" width={800} height={450} className="article-thumbnail-img" />
+                  </div>
+                );
+              }
+              return null;
+            })}
+          </div>
+        </div>
+      </section>
+
+      <ArticleFooter />
+
+      <footer>
+        <p className="footer-site">zenist-life</p>
+        <Link href="/" className="footer-back">← トップへ戻る</Link>
+      </footer>
+    </main>
+  );
+}
