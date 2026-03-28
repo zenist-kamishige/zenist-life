@@ -325,7 +325,7 @@ footer {
 
 .article-title {
   font-family: 'Noto Serif JP', serif;
-  font-size: 24px;
+  font-size: 18px;
   font-weight: 400;
   line-height: 1.8;
   letter-spacing: 0.06em;
@@ -502,12 +502,12 @@ footer {
 .article-image-wrap {
   margin: 32px 0;
 }
-
+/* ── 記事太字 ── */
 .article-paragraph strong {
   font-weight: 700;
   color: var(--color-ink);
 }
-/* ── 記事見出し ── */
+/* ── 記事見出し表示 ── */
 .article-heading2 {
   font-family: 'Noto Serif JP', serif;
   font-size: 22px;
