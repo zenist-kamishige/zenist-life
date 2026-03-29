@@ -1,39 +1,118 @@
+import { getPost, notion } from "@/lib/notion";
 import Link from "next/link";
+import Image from "next/image";
+import ArticleFooter from "@/app/components/ArticleFooter";
 
-export default function ArticleFooter() {
+export async function generateMetadata({ params }: any) {
+  const { slug } = await params;
+  const post = await getPost(slug);
+  return {
+    title: post?.title ?? "zenist-life",
+    description: post?.description ?? "",
+  };
+}
+
+const categoryImages: Record<string, string> = {
+  "調": "/cat-shira.png",
+  "解": "/cat-toku.png",
+  "遊": "/cat-asobu.png",
+  "和": "/cat-nagomu.png",
+};
+
+export default async function PostPage({ params }: any) {
+  const { slug } = await params;
+  const postData = await getPost(slug);
+
+  if (!postData) return <div>記事が見つかりません</div>;
+
+  const category = postData.category;
+  const thumbnail = postData.thumbnail;
+  const bgImage = categoryImages[category] ?? "/hero-main.png";
+
+  const blocks = await notion.blocks.children.list({
+    block_id: postData.id,
+  });
+
   return (
-    <>
-      {/* カテゴリーナビ */}
-      <section id="category-nav">
-        <p className="category-nav-lead">他のカテゴリーを見る</p>
-        <div className="category-nav-buttons">
-          <Link href="/shira" className="category-nav-btn">調</Link>
-          <Link href="/toku" className="category-nav-btn">解</Link>
-          <Link href="/asobu" className="category-nav-btn">遊</Link>
-          <Link href="/nagomu" className="category-nav-btn">和</Link>
+    <main>
+      <section id="article-hero" style={{ backgroundImage: `url(${bgImage})` }}>
+        <div className="article-hero-overlay">
+          <h1 className="article-hero-title">
+            {postData.title}
+          </h1>
         </div>
       </section>
 
-      {/* おすすめ教材 */}
-      <section id="materials">
-        <p className="materials-lead">自分との対話を深めたいかたへ</p>
-        <a href="https://iroironoiro.info/l/c/fVqZsCq2/7d6fReGZ" target="_blank" rel="noopener noreferrer" className="materials-btn">
-          諸富祥彦のフォーカシング講座プロジェクト →
-        </a>
+      <section id="article">
+        <div className="article-inner">
+          {thumbnail && (
+            <div className="article-thumbnail">
+              <Image src={thumbnail} alt="" width={800} height={450} className="article-thumbnail-img" />
+            </div>
+          )}
+          <div className="article-body">
+            {blocks.results.map((block: any) => {
+              if (block.type === "paragraph") {
+                return (
+                  <p key={block.id} className="article-paragraph">
+                    {block.paragraph.rich_text.map((text: any, i: number) => {
+                      if (text.annotations.bold) {
+                        return <strong key={i}>{text.plain_text}</strong>;
+                      }
+                      if (text.annotations.color === "red") {
+                        return <span key={i} style={{ color: "#C0392B" }}>{text.plain_text}</span>;
+                      }
+                      if (text.annotations.color === "blue") {
+                        return <span key={i} style={{ color: "#2980B9" }}>{text.plain_text}</span>;
+                      }
+                      if (text.href) {
+                        return (
+                          <a key={i} href={text.href} target="_blank" rel="noopener noreferrer">
+                            {text.plain_text}
+                          </a>
+                        );
+                      }
+                      return <span key={i}>{text.plain_text}</span>;
+                    })}
+                  </p>
+                );
+              }
+              if (block.type === "heading_2") {
+                return (
+                  <h2 key={block.id} className="article-heading2">
+                    {block.heading_2.rich_text[0]?.plain_text}
+                  </h2>
+                );
+              }
+              if (block.type === "heading_3") {
+                return (
+                  <h3 key={block.id} className="article-heading3">
+                    {block.heading_3.rich_text[0]?.plain_text}
+                  </h3>
+                );
+              }
+              if (block.type === "image") {
+                const url = block.image.type === "external"
+                  ? block.image.external.url
+                  : block.image.file.url;
+                return (
+                  <div key={block.id} className="article-image-wrap">
+                    <Image src={url} alt="" width={800} height={450} className="article-thumbnail-img" />
+                  </div>
+                );
+              }
+              return null;
+            })}
+          </div>
+        </div>
       </section>
 
-      {/* セッションメニュー＋LINE */}
-      <section id="session-cta">
-        <p className="session-lead">一緒に話してみませんか？</p>
-        <Link href="/session" className="session-btn">
-          セッションメニューを見る →
-        </Link>
-        <a href="https://lin.ee/o1SPEu5O" target="_blank" rel="noopener noreferrer" className="line-btn">
-          <span className="line-btn-icon">＋</span>
-          LINEで話しかけてみる
-        </a>
-        <p className="line-cta-sub">古賀・宗像・福津を中心に活動しています</p>
-      </section>
-    </>
+      <ArticleFooter />
+
+      <footer>
+        <p className="footer-site">zenist-life</p>
+        <Link href="/" className="footer-back">← トップへ戻る</Link>
+      </footer>
+    </main>
   );
 }

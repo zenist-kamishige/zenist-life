@@ -3,6 +3,17 @@ import Link from "next/link";
 export default function ArticleFooter() {
   return (
     <>
+      {/* カテゴリーナビ */}
+      <section id="category-nav">
+        <p className="category-nav-lead">他のカテゴリーを見る</p>
+        <div className="category-nav-buttons">
+          <Link href="/shira" className="category-nav-btn">調</Link>
+          <Link href="/toku" className="category-nav-btn">解</Link>
+          <Link href="/asobu" className="category-nav-btn">遊</Link>
+          <Link href="/nagomu" className="category-nav-btn">和</Link>
+        </div>
+      </section>
+
       {/* おすすめ教材 */}
       <section id="materials">
         <p className="materials-lead">自分との対話を深めたいかたへ</p>
