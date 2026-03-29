@@ -574,3 +574,33 @@ footer {
   background: var(--color-accent);
   color: #fff;
 }
+
+/* ── カテゴリーヒーロー ── */
+#category-hero {
+  padding: 80px 24px;
+  text-align: center;
+}
+.category-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 64px;
+  font-weight: 300;
+  color: var(--color-ink);
+  line-height: 1;
+  margin: 16px 0 8px;
+}
+.category-yomi {
+  font-size: 13px;
+  letter-spacing: 0.15em;
+  color: var(--color-ink-muted);
+  margin-bottom: 24px;
+}
+.category-desc {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 14px;
+  line-height: 2.0;
+  letter-spacing: 0.06em;
+  color: var(--color-ink);
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
