@@ -530,3 +530,47 @@ footer {
   margin-bottom: 16px;
   color: var(--color-accent);
 }
+
+/* ── カテゴリーナビ ── */
+#category-nav {
+  padding: 60px 24px;
+  background: var(--color-bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  border-top: 1px solid var(--color-line);
+  border-bottom: 1px solid var(--color-line);
+}
+.category-nav-lead {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 12px;
+  letter-spacing: 0.3em;
+  color: var(--color-ink-muted);
+  text-transform: uppercase;
+}
+.category-nav-buttons {
+  display: flex;
+  gap: 1px;
+  border: 1px solid var(--color-line);
+}
+.category-nav-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  background: var(--color-surface);
+  border-right: 1px solid var(--color-line);
+  text-decoration: none;
+  font-family: 'Noto Serif JP', serif;
+  font-size: 32px;
+  font-weight: 300;
+  color: var(--color-ink);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+.category-nav-btn:last-child { border-right: none; }
+.category-nav-btn:hover {
+  background: var(--color-accent);
+  color: #fff;
+}
