@@ -4,6 +4,9 @@ import Script from "next/script";
 export const metadata = {
   title: "zenist-life",
   description: "なにかをしたい。でも、それがわからない。そもそも、なにができるかもわからない。",
+  verification: {
+    google: "gwjP4K01VngX5AG4lKKjVAE1zrEOOOaSW7reWDa13Rc"
+  },
   openGraph: {
     title: "zenist-life",
     description: "なにかをしたい。でも、それがわからない。そもそも、なにができるかもわからない。",
