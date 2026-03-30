@@ -575,8 +575,7 @@ footer {
 }
 .category-nav-buttons {
   display: flex;
-  gap: 1px;
-  border: 1px solid var(--color-line);
+  gap: 16px;
 }
 .category-nav-btn {
   display: flex;
@@ -584,23 +583,26 @@ footer {
   justify-content: center;
   width: 80px;
   height: 80px;
-  border-right: 1px solid var(--color-line);
+  border-radius: 50%;
   text-decoration: none;
   font-family: 'Noto Serif JP', serif;
   font-size: 32px;
   font-weight: 300;
   color: var(--color-ink);
-  transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  text-shadow: 2px 3px 6px rgba(0, 0, 0, 0.25);
 }
 .category-nav-btn:last-child { border-right: none; }
-.category-nav-btn:hover { opacity: 0.75; }
+.category-nav-btn:hover {
+  opacity: 0.85;
+  transform: translateY(-2px);
+}
 
 /* カテゴリー色分け */
-.category-nav-btn:nth-child(1) { background: #F2C46D; } /* 調：太陽 */
-.category-nav-btn:nth-child(2) { background: #C4A882; } /* 解：土 */
-.category-nav-btn:nth-child(3) { background: #7DB9C7; } /* 遊：水 */
-.category-nav-btn:nth-child(4) { background: #7FA67A; } /* 和：緑 */
-
+.category-nav-btn:nth-child(1) { background: #F2C46D; }
+.category-nav-btn:nth-child(2) { background: #C4A882; }
+.category-nav-btn:nth-child(3) { background: #7DB9C7; }
+.category-nav-btn:nth-child(4) { background: #7FA67A; }
 /* ── 内部検索 ── */
 #article-search {
   padding: 60px 24px;
