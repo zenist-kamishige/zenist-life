@@ -600,9 +600,9 @@ footer {
 
 /* カテゴリー色分け */
 .category-nav-btn:nth-child(1) { background: #F2C46D; }
-.category-nav-btn:nth-child(2) { background: #C4A882; }
+.category-nav-btn:nth-child(2) { background: #b48a4f; }
 .category-nav-btn:nth-child(3) { background: #7DB9C7; }
-.category-nav-btn:nth-child(4) { background: #7FA67A; }
+.category-nav-btn:nth-child(4) { background: #93b881; }
 /* ── 内部検索 ── */
 #article-search {
   padding: 60px 24px;
