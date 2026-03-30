@@ -4,7 +4,7 @@ import ArticleFooter from "@/app/components/ArticleFooter";
 
 export const metadata = {
   title: "ととのえる| zenist-life",
-  description: "呼吸や姿勢、そして習慣をととのえるためのヒントをお届けしています。",
+  description: "呼吸や姿勢、そして習慣をととのえるためのヒントをお届けしています。ほとんどの人が呼吸や姿勢を意識していません。ですが、ふだんやっている何気ないことが人生を決めています。当たり前のようでできていない呼吸や姿勢について解説をしています。",
 };
 
 export default async function TotonoePage() {
