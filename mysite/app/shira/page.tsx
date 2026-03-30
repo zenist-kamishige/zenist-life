@@ -4,7 +4,7 @@ import ArticleFooter from "@/app/components/ArticleFooter";
 
 export const metadata = {
   title: "ととのえる| zenist-life",
-  description: "呼吸や姿勢、そして習慣をととのえるためのヒントをお届けしています。ほとんどの人が呼吸や姿勢を意識していません。ですが、ふだんやっている何気ないことが人生を決めています。当たり前のようでできていない呼吸や姿勢について解説をしています。",
+  description: "呼吸や姿勢、そして習慣をととのえるためのヒントをお届けしています。ただしい呼吸や姿勢を意識していますか？ 実はふだんの何気ないことが人生を決めています。ただしい呼吸や姿勢を知って人生をよくしましょう。",
 };
 
 export default async function TotonoePage() {
@@ -19,7 +19,7 @@ export default async function TotonoePage() {
           <span className="site-name">zenist-life</span>
           <h1 className="category-title">調</h1>
           <p className="category-yomi">ととのえる</p>
-          <p className="category-desc">呼吸や姿勢、そして習慣をととのえるためのヒントをお届けしています。ただしい呼吸や姿勢を意識していますか？ ふだんやっている何気ないことが人生を決めています。当たり前のようでできていない呼吸や姿勢について解説をしています。</p>
+          <p className="category-desc">呼吸や姿勢、そして習慣をととのえるためのヒントをお届けしています。ただしい呼吸や姿勢を意識していますか？ 実はふだんの何気ないことが人生を決めています。ただしい呼吸や姿勢を知って人生をよくしましょう。</p>
         </div>
       </section>
       <section id="latest-posts">
