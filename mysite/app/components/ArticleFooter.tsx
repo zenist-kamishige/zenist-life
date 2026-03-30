@@ -1,6 +1,17 @@
 import Link from "next/link";
+import { getPosts } from "@/lib/notion";
+import ArticleSearch from "./ArticleSearch";
 
-export default function ArticleFooter() {
+export default async function ArticleFooter() {
+  const allPosts = await getPosts();
+  const posts = allPosts.map((post: any) => ({
+    id: post.id,
+    title: post.properties.Title?.title?.[0]?.plain_text ?? "",
+    slug: post.properties.Slug?.rich_text?.[0]?.plain_text ?? "",
+    description: post.properties.Description?.rich_text?.[0]?.plain_text ?? "",
+    category: post.properties.Category?.select?.name ?? "",
+  }));
+
   return (
     <>
       {/* カテゴリーナビ */}
@@ -13,6 +24,9 @@ export default function ArticleFooter() {
           <Link href="/nagomu" className="category-nav-btn">和</Link>
         </div>
       </section>
+
+      {/* 内部検索 */}
+      <ArticleSearch posts={posts} />
 
       {/* おすすめ教材 */}
       <section id="materials">
