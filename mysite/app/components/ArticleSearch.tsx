@@ -1,50 +1,34 @@
-"use client";
-import { useState } from "react";
 import Link from "next/link";
+import { getPosts } from "@/lib/notion";
+import ArticleSearch from "./ArticleSearch";
 
-type Post = {
-  id: string;
-  title: string;
-  slug: string;
-  description: string;
-  category: string;
-};
-
-export default function ArticleSearch({ posts }: { posts: Post[] }) {
-  const [query, setQuery] = useState("");
-
-  const results = query.trim()
-    ? posts.filter(
-        (p) =>
-          p.title.includes(query) ||
-          p.description.includes(query)
-      )
-    : [];
+export default async function ArticleFooter() {
+  const allPosts = await getPosts();
+  const posts = allPosts.map((post: any) => ({
+    id: post.id,
+    title: post.properties.Title?.title?.[0]?.plain_text ?? "",
+    slug: post.properties.Slug?.rich_text?.[0]?.plain_text ?? "",
+    description: post.properties.Description?.rich_text?.[0]?.plain_text ?? "",
+    category: post.properties.Category?.select?.name ?? "",
+  }));
 
   return (
-    <section id="article-search">
-      <p className="search-lead">記事を検索する</p>
-      <input
-        type="text"
-        className="search-input"
-        placeholder="キーワードを入力..."
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
-      />
-      {query.trim() && (
-        <div className="search-results">
-          {results.length > 0 ? (
-            results.map((post) => (
-              <Link key={post.id} href={`/${post.slug}`} className="search-result-item">
-                <span className="search-result-category">{post.category}</span>
-                <span className="search-result-title">{post.title}</span>
-              </Link>
-            ))
-          ) : (
-            <p className="search-no-result">見つかりませんでした</p>
-          )}
+    <>
+      {/* カテゴリーナビ */}
+      <section id="category-nav">
+        <p className="category-nav-lead">他のカテゴリーを見る</p>
+        <div className="category-nav-buttons">
+          <Link href="/shira" className="category-nav-btn">調</Link>
+          <Link href="/toku" className="category-nav-btn">解</Link>
+          <Link href="/asobu" className="category-nav-btn">遊</Link>
+          <Link href="/nagomu" className="category-nav-btn">和</Link>
         </div>
-      )}
-    </section>
-  );
-}
+      </section>
+
+      {/* 内部検索 */}
+      <ArticleSearch posts={posts} />
+
+      {/* おすすめ教材 */}
+      <section id="materials">
+        <p className="materials-lead">自分との対話を深めたいかたへ</p>
+        <a href="https://iroironoiro.info/l/c/fVqZsCq2/7d6fReGZ" target="_blank" rel="noopener noreferrer" className="materials-btn"></a>
