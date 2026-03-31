@@ -576,6 +576,9 @@ footer {
 .category-nav-buttons {
   display: flex;
   gap: 16px;
+  flex-wrap: wrap;        /* 追加：はみ出したら折り返す */
+  justify-content: center; /* 追加：中央揃え */
+  padding: 0 16px;        /* 追加：左右に余白 */
 }
 .category-nav-btn {
   display: flex;
