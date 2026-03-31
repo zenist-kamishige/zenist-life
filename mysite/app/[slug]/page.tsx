@@ -18,6 +18,7 @@ function generateJsonLd(post: {
   date: string;
   updatedAt: string;
   thumbnail: string;
+  category: string;
 }) {
   return {
     "@context": "https://schema.org",
@@ -42,7 +43,30 @@ function generateJsonLd(post: {
       "@type": "Organization",
       "name": "zenist-life",
       "url": "https://zenist-life.net"
+    },
+    "breadcrumb": {
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "トップ",
+      "item": "https://zenist-life.net"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": post.category,
+      "item": `https://zenist-life.net/${post.category === "調" ? "shira" : post.category === "解" ? "toku" : post.category === "遊" ? "asobu" : "nagomu"}`
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": post.title,
+      "item": `https://zenist-life.net/${post.slug}`
     }
+  ]
+}
   };
 }
 const categoryImages: Record<string, string> = {
