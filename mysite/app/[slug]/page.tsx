@@ -82,9 +82,13 @@ export default async function PostPage({ params }: any) {
       {/* article要素：AIが「ここが本文」と判断する核心 */}
       <article id="article" aria-label={postData.title}>
 
-        <header className="article-meta">
-          <p className="article-category">{category}</p>
-        </header>
+        <nav className="article-breadcrumb" aria-label="パンくずリスト">
+          <Link href="/">トップ</Link>
+          <span> / </span>
+          <Link href={`/${category === "調" ? "shira" : category === "解" ? "toku" : category === "遊" ? "asobu" : "nagomu"}`}>
+          {category}
+          </Link>
+        </nav>
 
         <div className="article-inner">
           {thumbnail && (
