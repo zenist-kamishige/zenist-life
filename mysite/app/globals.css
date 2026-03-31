@@ -528,7 +528,7 @@ footer {
 /* ── カテゴリーヒーロー ── */
 #category-hero {
   padding: 80px 24px;
-  text-align: center;
+  text-align: left;
 }
 .category-title {
   font-family: 'Noto Serif JP', serif;
@@ -551,7 +551,7 @@ footer {
   letter-spacing: 0.06em;
   color: var(--color-ink);
   max-width: 480px;
-  margin: 0 auto;
+  margin: 0;
   padding: 0 16px;
 }
 
