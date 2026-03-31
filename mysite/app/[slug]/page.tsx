@@ -33,9 +33,10 @@ function generateJsonLd(post: {
       "name": "カミシゲ",
       "url": "https://zenist-life.net/about",
       "sameAs": [
-        "https://note.com/kamishige"
-      ],
-      "description": "資本主義への違和感と、社会不適合者のすすめを発信する実践者"
+  "https://www.instagram.com/tamasora_kamishige/"
+  ,"https://note.com/sora_nagaru"
+],
+      "description": "福岡県古賀市を拠点に日土水むらの活動、たまにはSoraでもながめましょというお店で活動中。資本主義への違和感から社会の枠をはずれ、ハイブリッドな縄文時代の暮らしを提案する実践者。"
     },
     "publisher": {
       "@type": "Organization",
