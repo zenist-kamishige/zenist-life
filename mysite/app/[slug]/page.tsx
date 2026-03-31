@@ -34,23 +34,36 @@ export default async function PostPage({ params }: any) {
   });
 
   return (
-    <main>
-      <section id="article-hero" style={{ backgroundImage: `url(${bgImage})` }}>
+    <>
+      {/* ヒーロー画像はarticleの外 */}
+      <header id="article-hero" style={{ backgroundImage: `url(${bgImage})` }}>
         <div className="article-hero-overlay">
-          <h1 className="article-hero-title">
-            {postData.title}
-          </h1>
+          <h1 className="article-hero-title">{postData.title}</h1>
         </div>
-      </section>
+      </header>
 
-      <section id="article">
+      {/* article要素：AIが「ここが本文」と判断する核心 */}
+      <article id="article" aria-label={postData.title}>
+
+        <header className="article-meta">
+          <p className="article-category">{category}</p>
+        </header>
+
         <div className="article-inner">
           {thumbnail && (
-            <div className="article-thumbnail">
-              <Image src={thumbnail} alt="" width={800} height={450} className="article-thumbnail-img" />
-            </div>
+            <figure className="article-thumbnail">
+              <Image
+                src={thumbnail}
+                alt={postData.title}
+                width={800}
+                height={450}
+                className="article-thumbnail-img"
+              />
+            </figure>
           )}
-          <div className="article-body">
+
+          {/* ここがAIに「核心」と伝わるsection */}
+          <section className="article-body" aria-label="本文">
             {blocks.results.map((block: any) => {
               if (block.type === "paragraph") {
                 return (
@@ -92,20 +105,27 @@ export default async function PostPage({ params }: any) {
                 );
               }
               if (block.type === "image") {
-                const url = block.image.type === "external"
-                  ? block.image.external.url
-                  : block.image.file.url;
+                const url =
+                  block.image.type === "external"
+                    ? block.image.external.url
+                    : block.image.file.url;
                 return (
-                  <div key={block.id} className="article-image-wrap">
-                    <Image src={url} alt="" width={800} height={450} className="article-thumbnail-img" />
-                  </div>
+                  <figure key={block.id} className="article-image-wrap">
+                    <Image
+                      src={url}
+                      alt=""
+                      width={800}
+                      height={450}
+                      className="article-thumbnail-img"
+                    />
+                  </figure>
                 );
               }
               return null;
             })}
-          </div>
+          </section>
         </div>
-      </section>
+      </article>
 
       <ArticleFooter />
 
@@ -113,6 +133,6 @@ export default async function PostPage({ params }: any) {
         <p className="footer-site">zenist-life</p>
         <Link href="/" className="footer-back">← トップへ戻る</Link>
       </footer>
-    </main>
+    </>
   );
 }
