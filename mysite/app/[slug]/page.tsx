@@ -11,7 +11,39 @@ export async function generateMetadata({ params }: any) {
     description: post?.description ?? "",
   };
 }
-
+function generateJsonLd(post: {
+  title: string;
+  description: string;
+  slug: string;
+  date: string;
+  updatedAt: string;
+  thumbnail: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "OpinionNewsArticle",
+    "headline": post.title,
+    "description": post.description,
+    "url": `https://zenist-life.net/${post.slug}`,
+    "datePublished": post.date,
+    "dateModified": post.updatedAt || post.date,
+    "image": post.thumbnail || "https://zenist-life.net/hero-main.png",
+    "author": {
+      "@type": "Person",
+      "name": "カミシゲ",
+      "url": "https://zenist-life.net/about",
+      "sameAs": [
+        "https://note.com/kamishige"
+      ],
+      "description": "資本主義への違和感と、社会不適合者のすすめを発信する実践者"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "zenist-life",
+      "url": "https://zenist-life.net"
+    }
+  };
+}
 const categoryImages: Record<string, string> = {
   "調": "/cat-shira.png",
   "解": "/cat-toku.png",
@@ -35,6 +67,10 @@ export default async function PostPage({ params }: any) {
 
   return (
     <>
+<script
+  type="application/ld+json"
+  dangerouslySetInnerHTML={{ __html: JSON.stringify(generateJsonLd(postData)) }}
+/>
       {/* ヒーロー画像はarticleの外 */}
       <header id="article-hero" style={{ backgroundImage: `url(${bgImage})` }}>
         <div className="article-hero-overlay">
