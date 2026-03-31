@@ -574,11 +574,11 @@ footer {
   text-transform: uppercase;
 }
 .category-nav-buttons {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(2, 80px);
   gap: 16px;
-  flex-wrap: wrap;        /* 追加：はみ出したら折り返す */
-  justify-content: center; /* 追加：中央揃え */
-  padding: 0 16px;        /* 追加：左右に余白 */
+  justify-content: center;
+}
 }
 .category-nav-btn {
   display: flex;
