@@ -1,48 +1,3 @@
-import { Client } from "@notionhq/client";
-
-export const notion = new Client({
-  auth: process.env.NOTION_TOKEN,
-});
-
-export async function getPosts() {
-  const response = await notion.databases.query({
-    database_id: process.env.NOTION_DATABASE_ID!,
-    page_size: 20,
-    filter: {
-      and: [
-        {
-          property: "Published",
-          checkbox: { equals: true },
-        },
-        {
-          property: "Category",
-          select: { does_not_equal: "セッション" },
-        },
-      ],
-    },
-  });
-  return response.results;
-}
-
-export async function getSessionPage() {
-  const response = await notion.databases.query({
-    database_id: process.env.NOTION_DATABASE_ID!,
-    filter: {
-      and: [
-        {
-          property: "Published",
-          checkbox: { equals: true },
-        },
-        {
-          property: "Category",
-          select: { equals: "セッション" },
-        },
-      ],
-    },
-  });
-  return response.results[0] ?? null;
-}
-
 export async function getPost(slug: string) {
   const response = await notion.databases.query({
     database_id: process.env.NOTION_DATABASE_ID!,
@@ -58,5 +13,8 @@ export async function getPost(slug: string) {
   const description = props["Description"]?.rich_text?.[0]?.plain_text ?? "";
   const category = props["Category"]?.select?.name ?? "";
   const thumbnail = props["Thumbnail"]?.url ?? "";
-  return { id: page.id, title, description, category, thumbnail, slug };
+  const date = props["Date"]?.date?.start ?? "";
+  const updatedAt = props["UpdatedAt"]?.date?.start ?? "";
+
+  return { id: page.id, title, description, category, thumbnail, slug, date, updatedAt };
 }
