@@ -113,6 +113,29 @@ export default async function PostPage({ params }: any) {
           {category}
           </Link>
         </nav>
+{/* 目次：見出し2を自動生成 */}
+{(() => {
+  const headings = blocks.results.filter(
+    (block: any) => block.type === "heading_2"
+  );
+  if (headings.length === 0) return null;
+  return (
+    <nav className="article-toc" aria-label="目次">
+      <p className="article-toc-title">目次</p>
+      <ol className="article-toc-list">
+        {headings.map((block: any) => {
+          const text = block.heading_2.rich_text[0]?.plain_text ?? "";
+          const id = `h2-${block.id}`;
+          return (
+                <li key={block.id}>
+                <a href={`#${id}`}>{text}</a>
+                </li>
+              );
+              })}
+              </ol>
+            </nav>
+          );
+        })()}
 
         <div className="article-inner">
           {thumbnail && (
@@ -157,7 +180,7 @@ export default async function PostPage({ params }: any) {
               }
               if (block.type === "heading_2") {
                 return (
-                  <h2 key={block.id} className="article-heading2">
+                 <h2 key={block.id} id={`h2-${block.id}`} className="article-heading2">
                     {block.heading_2.rich_text[0]?.plain_text}
                   </h2>
                 );
