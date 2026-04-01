@@ -34,9 +34,9 @@ function generateJsonLd(post: {
       "name": "カミシゲ",
       "url": "https://zenist-life.net/about",
       "sameAs": [
-  "https://www.instagram.com/tamasora_kamishige/"
-  ,"https://note.com/sora_nagaru"
-],
+        "https://www.instagram.com/tamasora_kamishige/",
+        "https://note.com/sora_nagaru"
+      ],
       "description": "福岡県古賀市を拠点に日土水むらの活動、たまにはSoraでもながめましょというお店で活動中。資本主義への違和感から社会の枠をはずれ、ハイブリッドな縄文時代の暮らしを提案する実践者。"
     },
     "publisher": {
@@ -45,30 +45,16 @@ function generateJsonLd(post: {
       "url": "https://zenist-life.net"
     },
     "breadcrumb": {
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "トップ",
-      "item": "https://zenist-life.net"
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "name": post.category,
-      "item": `https://zenist-life.net/${post.category === "調" ? "shira" : post.category === "解" ? "toku" : post.category === "遊" ? "asobu" : "nagomu"}`
-    },
-    {
-      "@type": "ListItem",
-      "position": 3,
-      "name": post.title,
-      "item": `https://zenist-life.net/${post.slug}`
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "トップ", "item": "https://zenist-life.net" },
+        { "@type": "ListItem", "position": 2, "name": post.category, "item": `https://zenist-life.net/${post.category === "調" ? "shira" : post.category === "解" ? "toku" : post.category === "遊" ? "asobu" : "nagomu"}` },
+        { "@type": "ListItem", "position": 3, "name": post.title, "item": `https://zenist-life.net/${post.slug}` }
+      ]
     }
-  ]
-}
   };
 }
+
 const categoryImages: Record<string, string> = {
   "調": "/cat-shira.png",
   "解": "/cat-toku.png",
@@ -92,50 +78,24 @@ export default async function PostPage({ params }: any) {
 
   return (
     <>
-<script
-  type="application/ld+json"
-  dangerouslySetInnerHTML={{ __html: JSON.stringify(generateJsonLd(postData)) }}
-/>
-      {/* ヒーロー画像はarticleの外 */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(generateJsonLd(postData)) }}
+      />
       <header id="article-hero" style={{ backgroundImage: `url(${bgImage})` }}>
         <div className="article-hero-overlay">
           <h1 className="article-hero-title">{postData.title}</h1>
         </div>
       </header>
 
-      {/* article要素：AIが「ここが本文」と判断する核心 */}
       <article id="article" aria-label={postData.title}>
-
         <nav className="article-breadcrumb" aria-label="パンくずリスト">
           <Link href="/">トップ</Link>
           <span> / </span>
           <Link href={`/${category === "調" ? "shira" : category === "解" ? "toku" : category === "遊" ? "asobu" : "nagomu"}`}>
-          {category}
+            {category}
           </Link>
         </nav>
-{/* 目次：見出し2を自動生成 */}
-{(() => {
-  const headings = blocks.results.filter(
-    (block: any) => block.type === "heading_2"
-  );
-  if (headings.length === 0) return null;
-  return (
-    <nav className="article-toc" aria-label="目次">
-      <p className="article-toc-title">目次</p>
-      <ol className="article-toc-list">
-        {headings.map((block: any) => {
-          const text = block.heading_2.rich_text[0]?.plain_text ?? "";
-          const id = `h2-${block.id}`;
-          return (
-                <li key={block.id}>
-                <a href={`#${id}`}>{text}</a>
-                </li>
-              );
-              })}
-              </ol>
-            </nav>
-          );
-        })()}
 
         <div className="article-inner">
           {thumbnail && (
@@ -150,29 +110,37 @@ export default async function PostPage({ params }: any) {
             </figure>
           )}
 
-          {/* ここがAIに「核心」と伝わるsection */}
           <section className="article-body" aria-label="本文">
             {blocks.results.map((block: any) => {
               if (block.type === "paragraph") {
+                const plainText = block.paragraph.rich_text[0]?.plain_text ?? "";
+                if (plainText === "目次") {
+                  const headings = blocks.results.filter(
+                    (b: any) => b.type === "heading_2"
+                  );
+                  return (
+                    <nav key={block.id} className="article-toc" aria-label="目次">
+                      <p className="article-toc-title">目次</p>
+                      <ol className="article-toc-list">
+                        {headings.map((b: any) => {
+                          const label = b.heading_2.rich_text[0]?.plain_text ?? "";
+                          return (
+                            <li key={b.id}>
+                              <a href={`#h2-${b.id}`}>{label}</a>
+                            </li>
+                          );
+                        })}
+                      </ol>
+                    </nav>
+                  );
+                }
                 return (
                   <p key={block.id} className="article-paragraph">
                     {block.paragraph.rich_text.map((text: any, i: number) => {
-                      if (text.annotations.bold) {
-                        return <strong key={i}>{text.plain_text}</strong>;
-                      }
-                      if (text.annotations.color === "red") {
-                        return <span key={i} style={{ color: "#C0392B" }}>{text.plain_text}</span>;
-                      }
-                      if (text.annotations.color === "blue") {
-                        return <span key={i} style={{ color: "#2980B9" }}>{text.plain_text}</span>;
-                      }
-                      if (text.href) {
-                        return (
-                          <a key={i} href={text.href} target="_blank" rel="noopener noreferrer">
-                            {text.plain_text}
-                          </a>
-                        );
-                      }
+                      if (text.annotations.bold) return <strong key={i}>{text.plain_text}</strong>;
+                      if (text.annotations.color === "red") return <span key={i} style={{ color: "#C0392B" }}>{text.plain_text}</span>;
+                      if (text.annotations.color === "blue") return <span key={i} style={{ color: "#2980B9" }}>{text.plain_text}</span>;
+                      if (text.href) return <a key={i} href={text.href} target="_blank" rel="noopener noreferrer">{text.plain_text}</a>;
                       return <span key={i}>{text.plain_text}</span>;
                     })}
                   </p>
@@ -180,7 +148,7 @@ export default async function PostPage({ params }: any) {
               }
               if (block.type === "heading_2") {
                 return (
-                 <h2 key={block.id} id={`h2-${block.id}`} className="article-heading2">
+                  <h2 key={block.id} id={`h2-${block.id}`} className="article-heading2">
                     {block.heading_2.rich_text[0]?.plain_text}
                   </h2>
                 );
@@ -193,19 +161,12 @@ export default async function PostPage({ params }: any) {
                 );
               }
               if (block.type === "image") {
-                const url =
-                  block.image.type === "external"
-                    ? block.image.external.url
-                    : block.image.file.url;
+                const url = block.image.type === "external"
+                  ? block.image.external.url
+                  : block.image.file.url;
                 return (
                   <figure key={block.id} className="article-image-wrap">
-                    <Image
-                      src={url}
-                      alt=""
-                      width={800}
-                      height={450}
-                      className="article-thumbnail-img"
-                    />
+                    <Image src={url} alt="" width={800} height={450} className="article-thumbnail-img" />
                   </figure>
                 );
               }
