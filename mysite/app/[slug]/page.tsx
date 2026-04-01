@@ -170,6 +170,9 @@ export default async function PostPage({ params }: any) {
                   </figure>
                 );
               }
+              if (block.type === "divider") {
+                return <hr key={block.id} className="article-divider" />;
+          }
               return null;
             })}
           </section>
