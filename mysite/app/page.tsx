@@ -34,7 +34,11 @@ export default async function Home() {
       </section>
 
       <KanjiMenu />
-      
+      <section id="all-posts-link" className="fade-in delay-2" style={{ textAlign: "center", padding: "2rem 0" }}>
+        <Link href="/posts" className="all-posts-btn">
+          記事一覧はこちら →
+        </Link>
+      </section>
       <section id="line-cta">
         <p className="line-cta-lead">
           もう少し、話を聞いてみたいと思ったら。
