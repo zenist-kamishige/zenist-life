@@ -8,6 +8,7 @@ export async function getPosts() {
   const response = await notion.databases.query({
     database_id: process.env.NOTION_DATABASE_ID!,
     page_size: 20,
+    sorts: [{ property: "Date", direction: "descending" }],
     filter: {
       and: [
         {
