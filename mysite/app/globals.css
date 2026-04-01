@@ -689,7 +689,6 @@ footer {
   color: var(--color-accent);
 }
 
-cat >> /workspaces/zenist-life/mysite/app/globals.css << 'EOF'
 
 .all-posts-btn {
   display: inline-block;
