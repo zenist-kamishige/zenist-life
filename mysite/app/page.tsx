@@ -34,7 +34,7 @@ export default async function Home() {
       </section>
 
       <KanjiMenu />
-
+      
       <section id="line-cta">
         <p className="line-cta-lead">
           もう少し、話を聞いてみたいと思ったら。
