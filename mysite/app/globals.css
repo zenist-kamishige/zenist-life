@@ -688,3 +688,21 @@ footer {
 .article-breadcrumb a:hover {
   color: var(--color-accent);
 }
+
+cat >> /workspaces/zenist-life/mysite/app/globals.css << 'EOF'
+
+.all-posts-btn {
+  display: inline-block;
+  padding: 0.8rem 2rem;
+  border: 2px solid #333;
+  border-radius: 999px;
+  color: #333;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: background 0.2s, color 0.2s;
+}
+
+.all-posts-btn:hover {
+  background: #333;
+  color: #fff;
+}
