@@ -1,3 +1,5 @@
+export const revalidate = 60;
+
 import { getPosts } from "@/lib/notion";
 import Link from "next/link";
 import ArticleFooter from "@/app/components/ArticleFooter";
