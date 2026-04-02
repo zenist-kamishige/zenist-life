@@ -1,3 +1,5 @@
+export const revalidate = 60;
+
 import { getPosts } from "@/lib/notion";
 import Link from "next/link";
 import KanjiMenu from "@/app/components/KanjiMenu";

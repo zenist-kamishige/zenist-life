@@ -1,3 +1,5 @@
+export const revalidate = 60;
+
 import { getPost, notion } from "@/lib/notion";
 import Link from "next/link";
 import Image from "next/image";
