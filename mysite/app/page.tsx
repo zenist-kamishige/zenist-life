@@ -18,7 +18,10 @@ export default async function Home() {
 
       <section id="hero" className="fade-in delay-1">
         <div className="hero-inner">
-          <span className="site-name">Zenist-Life</span>
+          <span className="site-name">
+          Zenist-Life<br />
+          <span style={{ fontSize: "0.65em" }}>ゼニストライフ</span>
+          </span>
           <Image src="/hero-main.png" alt="zenist-life hero" width={1200} height={630} className="hero-image" />
           <div className="hero-content">
           <p className="catchcopy">
