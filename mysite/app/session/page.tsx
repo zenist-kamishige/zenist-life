@@ -58,8 +58,11 @@ export default async function SessionPage() {
         />
         );
         } 
+        if (block.type === "divider") {
+           return <hr key={block.id} />;
+          }   
               return null;
-            })}
+      })}
           </div>
         </div>
       </section>
