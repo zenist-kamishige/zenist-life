@@ -28,7 +28,7 @@ export default async function SessionPage() {
         t.annotations.bold
           ? <strong key={i}>{t.plain_text}</strong>
           : t.plain_text
-      )}
+         )}
     </p>
   );
 }
@@ -43,7 +43,21 @@ export default async function SessionPage() {
             }
         if (block.type === "bulleted_list_item") {
           return <li key={block.id}>{block.bulleted_list_item.rich_text[0]?.plain_text}</li>;
-            }   
+            }  
+        if (block.type === "image") {
+          const url =
+          block.image.type === "external"
+          ? block.image.external.url
+          : block.image.file.url;
+        return (
+          <img
+          key={block.id}
+          src={url}
+          alt=""
+          style={{ maxWidth: "100%", height: "auto" }}
+        />
+        );
+        } 
               return null;
             })}
           </div>
