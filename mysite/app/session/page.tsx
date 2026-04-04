@@ -1,3 +1,4 @@
+export const revalidate = 60;
 import { getSessionPage, notion } from "@/lib/notion";
 import Link from "next/link";
 
