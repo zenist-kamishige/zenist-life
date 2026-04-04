@@ -20,13 +20,30 @@ export default async function SessionPage() {
           </h1>
           <div className="article-body">
             {blocks.results.map((block: any) => {
-              if (block.type === "paragraph") {
-                return (
-                  <p key={block.id} className="article-paragraph">
-                    {block.paragraph.rich_text[0]?.plain_text}
-                  </p>
-                );
-              }
+             if (block.type === "paragraph") {
+  const texts = block.paragraph.rich_text;
+  return (
+    <p key={block.id} className="article-paragraph">
+      {texts.map((t: any, i: number) =>
+        t.annotations.bold
+          ? <strong key={i}>{t.plain_text}</strong>
+          : t.plain_text
+      )}
+    </p>
+  );
+}
+        if (block.type === "heading_1") {
+          return <h1 key={block.id}>{block.heading_1.rich_text[0]?.plain_text}</h1>;
+            }
+        if (block.type === "heading_2") {
+          return <h2 key={block.id}>{block.heading_2.rich_text[0]?.plain_text}</h2>;
+            }
+        if (block.type === "heading_3") {
+          return <h3 key={block.id}>{block.heading_3.rich_text[0]?.plain_text}</h3>;
+            }
+        if (block.type === "bulleted_list_item") {
+          return <li key={block.id}>{block.bulleted_list_item.rich_text[0]?.plain_text}</li>;
+            }   
               return null;
             })}
           </div>
