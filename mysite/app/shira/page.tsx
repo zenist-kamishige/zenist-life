@@ -5,7 +5,7 @@ import Link from "next/link";
 import ArticleFooter from "@/app/components/ArticleFooter";
 export const metadata = {
   title: "調う| zenist-life",
-  description: "身体・呼吸・食についての記録です",
+  description: "息を吐く、深呼吸をする、姿勢をただす、食べるものを選ぶ。そんな当たり前のがあなたの人生をつくっています。そんな当たり前をととのえるヒントを紹介しています。",
 };
 export default async function ShiraPage() {
   const allPosts = await getPosts();
@@ -19,7 +19,7 @@ export default async function ShiraPage() {
           <span className="site-name">zenist-life</span>
           <h1 className="category-title">調</h1>
           <p className="category-yomi">ととのえる</p>
-          <p className="category-desc">身体・呼吸・食についての記録です</p>
+          <p className="category-desc">息を吐く</p>
         </div>
       </section>
       <section id="latest-posts">
