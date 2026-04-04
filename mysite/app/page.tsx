@@ -6,7 +6,7 @@ import KanjiMenu from "@/app/components/KanjiMenu";
 import Image from "next/image";
 
 export const metadata = {
-  title: "zenist-life | 福岡のスピリチュアルカウンセリング・コーチング",
+  title: "Zenist Life（ゼニストライフ） | 福岡のスピリチュアルカウンセリング・コーチング",
   description: "古賀・宗像・福津を中心に活動。占い・スピリチュアルカウンセリング・コーチングを通じて、あなたの「なりたい自分」へのヒントをお届けします。",
 };
 
