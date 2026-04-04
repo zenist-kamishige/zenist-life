@@ -19,7 +19,7 @@ export default async function ShiraPage() {
           <span className="site-name">zenist-life</span>
           <h1 className="category-title">調</h1>
           <p className="category-yomi">ととのえる</p>
-          <p className="category-desc">息を吐く</p>
+          <p className="category-desc">息を吐く、深呼吸をする、姿勢をただす、食べるものを選ぶ。そんな当たり前のがあなたの人生をつくっています。そんな当たり前をととのえるヒントを紹介しています。</p>
         </div>
       </section>
       <section id="latest-posts">
