@@ -5,7 +5,7 @@ import Link from "next/link";
 import ArticleFooter from "@/app/components/ArticleFooter";
 export const metadata = {
   title: "遊ぶ| zenist-life",
-  description: "星・魂・瞑想についての記録です",
+  description: "僕たちはなんで地球にやってきたのか。結論、遊ぶためだと思うのです。そんな地球を遊ぶための宇宙や地球のルールというテーマでヘリオセントリックや瞑想、スピリチュアルについて紹介しています。",
 };
 export default async function AsobuPage() {
   const allPosts = await getPosts();
@@ -19,7 +19,7 @@ export default async function AsobuPage() {
           <span className="site-name">zenist-life</span>
           <h1 className="category-title">遊</h1>
           <p className="category-yomi">あそぶ</p>
-          <p className="category-desc">星・魂・瞑想についての記録です</p>
+          <p className="category-desc">僕たちはなんで地球にやってきたのか。結論、遊ぶためだと思うのです。そんな地球を遊ぶための宇宙や地球のルールというテーマでヘリオセントリックや瞑想、スピリチュアルについて紹介しています。</p>
         </div>
       </section>
       <section id="latest-posts">
