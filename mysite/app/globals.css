@@ -488,7 +488,7 @@ footer {
 .article-thumbnail-img {
   width: 100%;
   max-width: 500px;
-  height: 250px;
+  height: 200px;
   object-fit: cover;
   object-position: center top;
   border-radius: 4px;
