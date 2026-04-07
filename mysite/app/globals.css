@@ -495,7 +495,16 @@ footer {
   display: block;
   margin: 0 auto;
 }
-.article-image-wrap { margin: 32px 0; }
+.article-image-wrap {
+  margin: 32px 0;
+}
+
+.article-image-wrap img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 4px;
+}
 
 /* ── 記事装飾 ── */
 .article-paragraph strong {
