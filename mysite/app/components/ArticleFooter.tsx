@@ -34,6 +34,10 @@ export default async function ArticleFooter() {
         <a href="https://iroironoiro.info/l/c/fVqZsCq2/7d6fReGZ" target="_blank" rel="noopener noreferrer" className="materials-btn">
           諸富祥彦のフォーカシング講座プロジェクト →
         </a>
+        <br />
+         <a href="https://iroironoiro.info/l/c/NWsKNCNg/7d6fReGZ" target="_blank" rel="noopener noreferrer" className="materials-btn">
+          クリアランスメソッドを学ぶ →
+        </a>
       </section>
 
       {/* セッションメニュー＋LINE */}
