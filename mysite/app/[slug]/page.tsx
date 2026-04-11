@@ -1,6 +1,6 @@
 export const revalidate = 60;
 
-import { getPost, notion } from "@/lib/notion";
+import { getPost, getPostsBySeries, notion } from "@/lib/notion";
 import Link from "next/link";
 import Image from "next/image";
 import ArticleFooter from "@/app/components/ArticleFooter";
@@ -77,6 +77,10 @@ export default async function PostPage({ params }: any) {
   const blocks = await notion.blocks.children.list({
     block_id: postData.id,
   });
+
+  const seriesPosts = postData.series
+  ? await getPostsBySeries(postData.series)
+  : [];
 
   return (
     <>
@@ -180,7 +184,23 @@ export default async function PostPage({ params }: any) {
           </section>
         </div>
       </article>
-
+            
+            {seriesPosts.length > 1 && (
+  <aside className="series-nav" aria-label="シリーズ">
+    <p className="series-nav-title">📚 シリーズ：{postData.series}</p>
+    <ol className="series-nav-list">
+      {seriesPosts.map((p, i) => (
+        <li key={p.id} className={p.slug === slug ? "series-nav-current" : ""}>
+          {p.slug === slug ? (
+            <span>{i + 1}. {p.title}</span>
+          ) : (
+            <Link href={`/${p.slug}`}>{i + 1}. {p.title}</Link>
+          )}
+        </li>
+         ))}
+        </ol>
+        </aside>
+        )}
       <ArticleFooter />
 
       <footer>

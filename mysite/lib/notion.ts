@@ -61,5 +61,32 @@ export async function getPost(slug: string) {
   const date = props["Date"]?.date?.start ?? "";
   const updatedAt = props["UpdatedAt"]?.date?.start ?? "";
 
-  return { id: page.id, title, description, category, thumbnail, slug, date, updatedAt };
+  const series = props["Series"]?.rich_text?.[0]?.plain_text ?? "";
+  return { id: page.id, title, description, category, thumbnail, slug, date, updatedAt, series };
+}
+
+export async function getPostsBySeries(seriesName: string) {
+  if (!seriesName) return [];
+  const response = await notion.databases.query({
+    database_id: process.env.NOTION_DATABASE_ID!,
+    filter: {
+      and: [
+        { property: "Published", checkbox: { equals: true } },
+        { property: "Series", rich_text: { equals: seriesName } },
+      ],
+    },
+    sorts: [{ property: "Date", direction: "ascending" }],
+  });
+
+  return response.results
+    .filter((page) => "properties" in page)
+    .map((page: any) => {
+      const props = page.properties as Record<string, any>;
+      return {
+        id: page.id,
+        title: props["Title"]?.title?.[0]?.plain_text ?? "",
+        slug: props["Slug"]?.rich_text?.[0]?.plain_text ?? "",
+        category: props["Category"]?.select?.name ?? "",
+      };
+    });
 }
