@@ -44,6 +44,10 @@ export default async function Home() {
           記事一覧はこちら →
         </Link>
       </section>
+       <section id="how-to-use" className="fade-in delay-2">
+        <h2 className="how-to-use-title">このサイトのつかいかた</h2>
+        <p className="how-to-use-text">このサイトで気になった記事をnotebookLMにいれてみてください。</p>
+      </section>
       <section id="line-cta">
         <p className="line-cta-lead">
           もう少し、話を聞いてみたいと思ったら。
