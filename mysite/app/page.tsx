@@ -45,7 +45,7 @@ export default async function Home() {
         </Link>
       </section>
        <section id="how-to-use" className="fade-in delay-2">
-        <h2 className="how-to-use-title">このサイトのつかいかた</h2>
+        <h2 className="how-to-use-title">このサイトの効果的なつかい方</h2>
         <p className="how-to-use-text">このサイトで気になった記事をnotebookLMにいれてみてください。アナタの悩みにカミシゲがお答えします。</p>
       </section>
       <section id="line-cta">
