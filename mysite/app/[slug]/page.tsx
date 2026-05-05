@@ -179,6 +179,21 @@ export default async function PostPage({ params }: any) {
               if (block.type === "divider") {
                 return <hr key={block.id} className="article-divider" />;
           }
+          if (block.type === "bulleted_list_item") {
+                return (
+          <ul key={block.id} className="article-bullet-list">
+          <li className="article-bullet-item">
+          {block.bulleted_list_item.rich_text.map((text: any, i: number) => {
+          if (text.annotations.bold) return <strong key={i}>{text.plain_text}</strong>;
+          if (text.annotations.color === "red") return <span key={i} style={{ color: "#C0392B" }}>{text.plain_text}</span>;
+          if (text.annotations.color === "blue") return <span key={i} style={{ color: "#2980B9" }}>{text.plain_text}</span>;
+          if (text.href) return <a key={i} href={text.href} target="_blank" rel="noopener noreferrer">{text.plain_text}</a>;
+          return <span key={i}>{text.plain_text}</span>;
+        })}
+        </li>
+        </ul>
+        );
+        }
               return null;
             })}
           </section>
