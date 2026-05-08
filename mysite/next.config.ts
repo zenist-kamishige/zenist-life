@@ -7,7 +7,7 @@
     async redirects() {                                                                                                                                                                   
       return [                                                                                                                                                                          
         {
-          source: "/:slug((?!posts|about|asobu|nagomu|shira|toku|session|dome).+)",
+          source: "/:slug((?!posts|about|asobu|nagomu|shira|toku|session|dome|_next)[^.]+)",
           destination: "/posts/:slug",                                                                                                                                                    
           permanent: true,
         },                                                                                                                                                                                
