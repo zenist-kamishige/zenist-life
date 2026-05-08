@@ -90,3 +90,16 @@ export async function getPostsBySeries(seriesName: string) {
       };
     });
 }
+  export async function getPostsByCategory(categoryName: string) {                                                                                                                        
+    const response = await notion.databases.query({                                                                                                                                       
+      database_id: process.env.NOTION_DATABASE_ID!,
+      filter: {                                                                                                                                                                           
+        and: [
+          { property: "Published", checkbox: { equals: true } },                                                                                                                          
+          { property: "Category", select: { equals: categoryName } },                                                                                                                   
+        ],                                                                                                                                                                                
+      },
+      sorts: [{ property: "Date", direction: "descending" }],                                                                                                                             
+    });                                                                                                                                                                                 
+    return response.results;
+  }

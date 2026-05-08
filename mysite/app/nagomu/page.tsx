@@ -1,6 +1,6 @@
 export const revalidate = 60;
 
-import { getPosts } from "@/lib/notion";
+import { getPostsByCategory } from "@/lib/notion"; 
 import Link from "next/link";
 import ArticleFooter from "@/app/components/ArticleFooter";
 export const metadata = {
@@ -8,10 +8,7 @@ export const metadata = {
   description: "日土水むら・田んぼでの活動記録です",
 };
 export default async function NagomuPage() {
-  const allPosts = await getPosts();
-  const posts = allPosts.filter(
-    (post: any) => post.properties.Category?.select?.name === "和"
-  );
+  const posts = await getPostsByCategory("和");
   return (
     <main>
       <section id="category-hero">
