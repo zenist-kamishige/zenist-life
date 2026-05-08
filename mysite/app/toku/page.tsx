@@ -30,7 +30,7 @@ export default async function TokuPage() {
             const slug = post.properties.Slug?.rich_text?.[0]?.plain_text ?? "";
             const date = post.properties.Date?.date?.start;
             return (
-              <Link key={post.id} href={`/${slug}`} className="posts-card">
+              <Link key={post.id} href={`/posts/${slug}`} className="posts-card">
                 <span className="posts-card-cat cat-toku">解</span>
                 <h3 className="posts-card-title">{title}</h3>
                 {date && <time className="posts-card-date">{date}</time>}
