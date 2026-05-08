@@ -69,7 +69,7 @@ export default async function Home() {
             const date = post.properties.Date?.date?.start;
             const category = post.properties.Category?.select?.name ?? "";
             return (
-              <Link key={post.id} href={`/${slug}`} className="post-card">
+             <Link key={post.id} href={`/posts/${slug}`} className="post-card">   
                 {category && <span className="post-category">{category}</span>}
                 <h3 className="post-title">{title}</h3>
                 {date && <time className="post-date">{date}</time>}
