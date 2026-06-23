@@ -1,16 +1,12 @@
-import { getPosts } from "@/lib/notion";
+import { getAllPosts } from "@/lib/markdown";
 
 export default async function sitemap() {
-  const posts = await getPosts();
+  const posts = await getAllPosts();
 
-  const postUrls = posts.map((post: any) => {
-    const slug = post.properties.Slug?.rich_text?.[0]?.plain_text ?? "";
-    const date = post.properties.Date?.date?.start ?? new Date().toISOString();
-    return {
-      url: `https://zenist-life.net/${slug}`,
-      lastModified: date,
-    };
-  });
+  const postUrls = posts.map((post) => ({
+    url: `https://zenist-life.net/${post.slug}`,
+    lastModified: post.updatedAt || post.date || new Date().toISOString(),
+  }));
 
   return [
     { url: "https://zenist-life.net", lastModified: new Date() },
