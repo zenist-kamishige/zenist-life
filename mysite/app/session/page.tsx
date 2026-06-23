@@ -1,77 +1,65 @@
 export const revalidate = 60;
-import { getSessionPage, notion } from "@/lib/notion";
+
+import { getSessionPage } from "@/lib/markdown";
+import { MDXRemote } from "next-mdx-remote/rsc";
+import rehypeSlug from "rehype-slug";
 import Link from "next/link";
+import Image from "next/image";
+
+const mdxComponents = {
+  p: (props: any) => <p className="article-paragraph" {...props} />,
+  h1: (props: any) => <h1 {...props} />,
+  h2: (props: any) => <h2 className="article-heading2" {...props} />,
+  h3: (props: any) => <h3 className="article-heading3" {...props} />,
+  hr: () => <hr className="article-divider" />,
+  ul: (props: any) => <ul className="article-bullet-list" {...props} />,
+  li: (props: any) => <li className="article-bullet-item" {...props} />,
+  img: ({ src, alt }: any) => (
+    <figure className="article-image-wrap">
+      <Image
+        src={src}
+        alt={alt ?? ""}
+        width={800}
+        height={450}
+        style={{ maxWidth: "100%", height: "auto" }}
+      />
+    </figure>
+  ),
+  a: (props: any) => <a target="_blank" rel="noopener noreferrer" {...props} />,
+  TableOfContents: () => null,
+};
 
 export default async function SessionPage() {
   const post = await getSessionPage();
-
   if (!post) return <div>準備中です</div>;
-
-  const blocks = await notion.blocks.children.list({
-    block_id: post.id,
-  });
 
   return (
     <main>
       <section id="article">
         <div className="article-inner">
-          <h1 className="article-title">
-            {(post as any).properties.Title.title[0]?.plain_text}
-          </h1>
+          <h1 className="article-title">{post.title}</h1>
           <div className="article-body">
-            {blocks.results.map((block: any) => {
-             if (block.type === "paragraph") {
-  const texts = block.paragraph.rich_text;
-  return (
-    <p key={block.id} className="article-paragraph">
-      {texts.map((t: any, i: number) =>
-        t.annotations.bold
-          ? <strong key={i}>{t.plain_text}</strong>
-          : t.plain_text
-         )}
-    </p>
-  );
-}
-        if (block.type === "heading_1") {
-          return <h1 key={block.id}>{block.heading_1.rich_text[0]?.plain_text}</h1>;
-            }
-        if (block.type === "heading_2") {
-          return <h2 key={block.id}>{block.heading_2.rich_text[0]?.plain_text}</h2>;
-            }
-        if (block.type === "heading_3") {
-          return <h3 key={block.id}>{block.heading_3.rich_text[0]?.plain_text}</h3>;
-            }
-        if (block.type === "bulleted_list_item") {
-          return <li key={block.id}>{block.bulleted_list_item.rich_text[0]?.plain_text}</li>;
-            }  
-        if (block.type === "image") {
-          const url =
-          block.image.type === "external"
-          ? block.image.external.url
-          : block.image.file.url;
-        return (
-          <img
-          key={block.id}
-          src={url}
-          alt=""
-          style={{ maxWidth: "100%", height: "auto" }}
-        />
-        );
-        } 
-        if (block.type === "divider") {
-           return <hr key={block.id} />;
-          }   
-              return null;
-      })}
+            <MDXRemote
+              source={post.content}
+              components={mdxComponents}
+              options={{
+                mdxOptions: {
+                  rehypePlugins: [rehypeSlug],
+                },
+              }}
+            />
           </div>
         </div>
       </section>
 
       <section id="line-cta">
-        <p className="line-cta-lead">
-          もう少し、話を聞いてみたいと思ったら。
-        </p>
-        <a href="https://lin.ee/o1SPEu5O" target="_blank" rel="noopener noreferrer" className="line-btn">
+        <p className="line-cta-lead">もう少し、話を聞いてみたいと思ったら。</p>
+        <a
+          href="https://lin.ee/o1SPEu5O"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="line-btn"
+        >
           <span className="line-btn-icon">＋</span>
           LINEで話しかけてみる
         </a>

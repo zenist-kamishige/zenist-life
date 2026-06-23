@@ -1,15 +1,15 @@
 import Link from "next/link";
-import { getPosts } from "@/lib/notion";
+import { getAllPosts } from "@/lib/markdown";
 import ArticleSearch from "./ArticleSearch";
 
 export default async function ArticleFooter() {
-  const allPosts = await getPosts();
-  const posts = allPosts.map((post: any) => ({
-    id: post.id,
-    title: post.properties.Title?.title?.[0]?.plain_text ?? "",
-    slug: post.properties.Slug?.rich_text?.[0]?.plain_text ?? "",
-    description: post.properties.Description?.rich_text?.[0]?.plain_text ?? "",
-    category: post.properties.Category?.select?.name ?? "",
+  const allPosts = await getAllPosts();
+  const posts = allPosts.map((post) => ({
+    id: post.slug,
+    title: post.title,
+    slug: post.slug,
+    description: post.description,
+    category: post.category,
   }));
 
   return (

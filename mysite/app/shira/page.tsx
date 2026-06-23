@@ -1,6 +1,6 @@
 export const revalidate = 60;
 
-import { getPosts } from "@/lib/notion";
+import { getPostsByCategory } from "@/lib/markdown";
 import Link from "next/link";
 import ArticleFooter from "@/app/components/ArticleFooter";
 export const metadata = {
@@ -8,10 +8,7 @@ export const metadata = {
   description: "息を吐く、深呼吸をする、姿勢をただす、食べるものを選ぶ。そんな当たり前のがあなたの人生をつくっています。そんな当たり前をととのえるヒントを紹介しています。",
 };
 export default async function ShiraPage() {
-  const allPosts = await getPosts();
-  const posts = allPosts.filter(
-    (post: any) => post.properties.Category?.select?.name === "調"
-  );
+  const posts = await getPostsByCategory("調");
   return (
     <main>
       <section id="category-hero">
@@ -25,18 +22,13 @@ export default async function ShiraPage() {
       <section id="latest-posts">
         <h2 className="latest-title">記事一覧</h2>
         <div className="posts-card-grid">
-          {posts.map((post: any) => {
-            const title = post.properties.Title?.title?.[0]?.plain_text ?? "Untitled";
-            const slug = post.properties.Slug?.rich_text?.[0]?.plain_text ?? "";
-            const date = post.properties.Date?.date?.start;
-            return (
-              <Link key={post.id} href={`/posts/${slug}`} className="posts-card">
-                <span className="posts-card-cat cat-shira">調</span>
-                <h3 className="posts-card-title">{title}</h3>
-                {date && <time className="posts-card-date">{date}</time>}
-              </Link>
-            );
-          })}
+          {posts.map((post) => (
+            <Link key={post.slug} href={`/posts/${post.slug}`} className="posts-card">
+              <span className="posts-card-cat cat-shira">調</span>
+              <h3 className="posts-card-title">{post.title || "Untitled"}</h3>
+              {post.date && <time className="posts-card-date">{post.date}</time>}
+            </Link>
+          ))}
         </div>
       </section>
       <ArticleFooter />

@@ -1,6 +1,6 @@
 export const revalidate = 60;
 
-import { getPosts } from "@/lib/notion";
+import { getAllPosts } from "@/lib/markdown";
 import Link from "next/link";
 import KanjiMenu from "@/app/components/KanjiMenu";
 import Image from "next/image";
@@ -11,7 +11,7 @@ export const metadata = {
 };
 
 export default async function Home() {
-  const posts = await getPosts();
+  const posts = await getAllPosts();
 
   return (
     <main>
@@ -63,19 +63,13 @@ export default async function Home() {
       <section id="latest-posts" className="fade-in delay-2">
         <h2 className="latest-title">Latest</h2>
         <div className="posts-grid">
-          {posts.map((post: any) => {
-            const title = post.properties.Title?.title?.[0]?.plain_text ?? "Untitled";
-            const slug = post.properties.Slug?.rich_text?.[0]?.plain_text ?? "";
-            const date = post.properties.Date?.date?.start;
-            const category = post.properties.Category?.select?.name ?? "";
-            return (
-             <Link key={post.id} href={`/posts/${slug}`} className="post-card">   
-                {category && <span className="post-category">{category}</span>}
-                <h3 className="post-title">{title}</h3>
-                {date && <time className="post-date">{date}</time>}
-              </Link>
-            );
-          })}
+          {posts.map((post) => (
+            <Link key={post.slug} href={`/posts/${post.slug}`} className="post-card">
+              {post.category && <span className="post-category">{post.category}</span>}
+              <h3 className="post-title">{post.title || "Untitled"}</h3>
+              {post.date && <time className="post-date">{post.date}</time>}
+            </Link>
+          ))}
         </div>
       </section>
 
