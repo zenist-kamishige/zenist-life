@@ -127,7 +127,7 @@ async function migratePage(page: any): Promise<boolean> {
   const body = blocks.map(blockToMdx).filter(Boolean).join("\n\n");
 
   const content = `${frontmatter}\n\n${body}\n`;
-  const outPath = path.join(OUT_DIR, `${slug}.mdx`);
+  const outPath = path.join(OUT_DIR, `${slug}.md`);
   await fs.writeFile(outPath, content, "utf8");
   console.log(`  ✓ ${slug} (${title})`);
   return true;

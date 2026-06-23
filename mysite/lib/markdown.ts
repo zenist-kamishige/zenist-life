@@ -31,12 +31,12 @@ export type Post = {
 async function readAllPostFiles(): Promise<Post[]> {
   const files = await fs.readdir(POSTS_DIR);
   const posts: Post[] = [];
-  for (const file of files.filter((f) => f.endsWith(".mdx"))) {
+  for (const file of files.filter((f) => f.endsWith(".md"))) {
     const raw = await fs.readFile(path.join(POSTS_DIR, file), "utf8");
     const { data, content } = matter(raw);
     posts.push({
       title: String(data.title ?? ""),
-      slug: String(data.slug ?? file.replace(/\.mdx$/, "")),
+      slug: String(data.slug ?? file.replace(/\.md$/, "")),
       category: String(data.category ?? ""),
       date: toDateString(data.date),
       updatedAt: data.updatedAt ? toDateString(data.updatedAt) : undefined,
