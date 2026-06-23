@@ -4,6 +4,17 @@ import matter from "gray-matter";
 
 const POSTS_DIR = path.join(process.cwd(), "content/posts");
 
+function toDateString(v: unknown): string {
+  if (!v) return "";
+  if (v instanceof Date) {
+    const yyyy = v.getUTCFullYear();
+    const mm = String(v.getUTCMonth() + 1).padStart(2, "0");
+    const dd = String(v.getUTCDate()).padStart(2, "0");
+    return `${yyyy}-${mm}-${dd}`;
+  }
+  return String(v);
+}
+
 export type Post = {
   title: string;
   slug: string;
@@ -27,8 +38,8 @@ async function readAllPostFiles(): Promise<Post[]> {
       title: String(data.title ?? ""),
       slug: String(data.slug ?? file.replace(/\.mdx$/, "")),
       category: String(data.category ?? ""),
-      date: String(data.date ?? ""),
-      updatedAt: data.updatedAt ? String(data.updatedAt) : undefined,
+      date: toDateString(data.date),
+      updatedAt: data.updatedAt ? toDateString(data.updatedAt) : undefined,
       description: String(data.description ?? ""),
       thumbnail: data.thumbnail ? String(data.thumbnail) : undefined,
       series: data.series ? String(data.series) : undefined,

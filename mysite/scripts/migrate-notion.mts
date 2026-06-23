@@ -113,9 +113,9 @@ async function migratePage(page: any): Promise<boolean> {
     `title: ${yamlString(title)}`,
     `slug: ${slug}`,
     `category: ${yamlString(category)}`,
-    `date: ${date}`,
+    `date: "${date}"`,
   ];
-  if (updatedAt) fmLines.push(`updatedAt: ${updatedAt}`);
+  if (updatedAt) fmLines.push(`updatedAt: "${updatedAt}"`);
   fmLines.push(`description: ${yamlString(description)}`);
   if (thumbnail) fmLines.push(`thumbnail: ${yamlString(thumbnail)}`);
   if (series) fmLines.push(`series: ${yamlString(series)}`);
