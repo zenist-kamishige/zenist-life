@@ -14,6 +14,18 @@ export async function generateMetadata({ params }: any) {
   };
 }
 
+const kamishigePerson = {
+  "@type": "Person",
+  "name": "カミシゲ",
+  "url": "https://zenist-life.net/about",
+  "sameAs": [
+    "https://www.instagram.com/tamasora_kamishige/",
+    "https://note.com/sora_nagaru",
+  ],
+  "description":
+    "福岡県古賀市を拠点に日土水むらの活動、たまにはSoraでもながめましょというお店で活動中。資本主義への違和感から社会の枠をはずれ、ハイブリッドな縄文時代の暮らしを提案する実践者。",
+};
+
 function generateJsonLd(entry: {
   title: string;
   slug: string;
@@ -29,12 +41,15 @@ function generateJsonLd(entry: {
       "@type": "DefinedTermSet",
       "name": "zenist-life AIナレッジベース",
       "url": "https://zenist-life.net/kb",
+      "author": kamishigePerson,
     },
     "dateCreated": entry.date,
-    "creator": {
-      "@type": "Person",
-      "name": "カミシゲ",
-      "url": "https://zenist-life.net/about",
+    "creator": kamishigePerson,
+    "author": kamishigePerson,
+    "publisher": {
+      "@type": "Organization",
+      "name": "zenist-life",
+      "url": "https://zenist-life.net",
     },
   };
 }

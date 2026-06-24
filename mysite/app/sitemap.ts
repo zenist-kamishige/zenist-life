@@ -22,6 +22,7 @@ export default async function sitemap() {
     { url: "https://zenist-life.net/toku", lastModified: new Date() },
     { url: "https://zenist-life.net/asobu", lastModified: new Date() },
     { url: "https://zenist-life.net/nagomu", lastModified: new Date() },
+    { url: "https://zenist-life.net/kb", lastModified: new Date() },
     ...postUrls,
     ...kbUrls,
   ];
