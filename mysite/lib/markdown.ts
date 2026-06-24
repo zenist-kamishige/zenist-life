@@ -81,3 +81,46 @@ export async function getPostsByCategory(categoryName: string): Promise<Post[]> 
     .filter((p) => p.published && p.category === categoryName)
     .sort((a, b) => (a.date < b.date ? 1 : -1));
 }
+
+const KB_DIR = path.join(process.cwd(), "content/kb");
+
+export type KbEntry = {
+  title: string;
+  slug: string;
+  date: string;
+  status: string;
+  related: string[];
+  published: boolean;
+  content: string;
+};
+
+async function readAllKbFiles(): Promise<KbEntry[]> {
+  const files = await fs.readdir(KB_DIR);
+  const entries: KbEntry[] = [];
+  for (const file of files.filter((f) => f.endsWith(".md"))) {
+    const raw = await fs.readFile(path.join(KB_DIR, file), "utf8");
+    const { data, content } = matter(raw);
+    entries.push({
+      title: String(data.title ?? ""),
+      slug: String(data.slug ?? file.replace(/\.md$/, "")),
+      date: toDateString(data.date),
+      status: String(data.status ?? ""),
+      related: Array.isArray(data.related) ? data.related.map(String) : [],
+      published: Boolean(data.published ?? false),
+      content,
+    });
+  }
+  return entries;
+}
+
+export async function getAllKb(): Promise<KbEntry[]> {
+  const all = await readAllKbFiles();
+  return all
+    .filter((e) => e.published)
+    .sort((a, b) => (a.date < b.date ? 1 : -1));
+}
+
+export async function getKbBySlug(slug: string): Promise<KbEntry | null> {
+  const all = await readAllKbFiles();
+  return all.find((e) => e.slug === slug && e.published) ?? null;
+}
