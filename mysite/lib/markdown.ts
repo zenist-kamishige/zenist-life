@@ -84,15 +84,41 @@ export async function getPostsByCategory(categoryName: string): Promise<Post[]> 
 
 const KB_DIR = path.join(process.cwd(), "content/kb");
 
+export type KbFaqItem = { q: string; a: string };
+
 export type KbEntry = {
   title: string;
   slug: string;
   date: string;
+  updated?: string;
   status: string;
   related: string[];
   published: boolean;
   content: string;
+  faq: KbFaqItem[];
 };
+
+function extractFAQ(content: string): KbFaqItem[] {
+  const marker = "## よくある質問（FAQ）";
+  const idx = content.indexOf(marker);
+  if (idx === -1) return [];
+  const rest = content.slice(idx + marker.length);
+  const endMatch = rest.match(/\n##\s/);
+  const section = endMatch ? rest.slice(0, endMatch.index) : rest;
+
+  const items: KbFaqItem[] = [];
+  const blocks = section.split(/\n### Q:\s*/).slice(1);
+  for (const block of blocks) {
+    const nlIdx = block.indexOf("\n");
+    const q = (nlIdx === -1 ? block : block.slice(0, nlIdx)).trim();
+    const afterQ = nlIdx === -1 ? "" : block.slice(nlIdx + 1);
+    const aMatch = afterQ.match(/A:\s*/);
+    if (!aMatch || aMatch.index === undefined) continue;
+    const a = afterQ.slice(aMatch.index + aMatch[0].length).trim();
+    if (q && a) items.push({ q, a });
+  }
+  return items;
+}
 
 async function readAllKbFiles(): Promise<KbEntry[]> {
   const files = await fs.readdir(KB_DIR);
@@ -104,10 +130,12 @@ async function readAllKbFiles(): Promise<KbEntry[]> {
       title: String(data.title ?? ""),
       slug: String(data.slug ?? file.replace(/\.md$/, "")),
       date: toDateString(data.date),
+      updated: data.updated ? toDateString(data.updated) : undefined,
       status: String(data.status ?? ""),
       related: Array.isArray(data.related) ? data.related.map(String) : [],
       published: Boolean(data.published ?? false),
       content,
+      faq: extractFAQ(content),
     });
   }
   return entries;

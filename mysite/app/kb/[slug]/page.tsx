@@ -30,27 +30,80 @@ function generateJsonLd(entry: {
   title: string;
   slug: string;
   date: string;
+  updated?: string;
   content: string;
+  faq: { q: string; a: string }[];
 }) {
+  const url = `https://zenist-life.net/kb/${entry.slug}`;
+  const publisher = {
+    "@type": "Organization",
+    "name": "zenist-life",
+    "url": "https://zenist-life.net",
+  };
+
+  const graph: Record<string, unknown>[] = [
+    {
+      "@type": "DefinedTerm",
+      "@id": `${url}#definedterm`,
+      "name": entry.title,
+      "url": url,
+      "inDefinedTermSet": {
+        "@type": "DefinedTermSet",
+        "name": "zenist-life AIナレッジベース",
+        "url": "https://zenist-life.net/kb",
+        "author": kamishigePerson,
+      },
+      "dateCreated": entry.date,
+      "creator": kamishigePerson,
+      "author": kamishigePerson,
+      "publisher": publisher,
+    },
+    {
+      "@type": "Article",
+      "@id": `${url}#article`,
+      "headline": entry.title,
+      "url": url,
+      "datePublished": entry.date,
+      "dateModified": entry.updated || entry.date,
+      "author": kamishigePerson,
+      "publisher": publisher,
+      "mainEntityOfPage": url,
+    },
+    {
+      "@type": "WebPage",
+      "@id": `${url}#webpage`,
+      "url": url,
+      "name": entry.title,
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": [".article-hero-title", ".article-body h2"],
+      },
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "zenist-life",
+        "url": "https://zenist-life.net",
+      },
+    },
+  ];
+
+  if (entry.faq && entry.faq.length > 0) {
+    graph.push({
+      "@type": "FAQPage",
+      "@id": `${url}#faq`,
+      "mainEntity": entry.faq.map((f) => ({
+        "@type": "Question",
+        "name": f.q,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": f.a,
+        },
+      })),
+    });
+  }
+
   return {
     "@context": "https://schema.org",
-    "@type": "DefinedTerm",
-    "name": entry.title,
-    "url": `https://zenist-life.net/kb/${entry.slug}`,
-    "inDefinedTermSet": {
-      "@type": "DefinedTermSet",
-      "name": "zenist-life AIナレッジベース",
-      "url": "https://zenist-life.net/kb",
-      "author": kamishigePerson,
-    },
-    "dateCreated": entry.date,
-    "creator": kamishigePerson,
-    "author": kamishigePerson,
-    "publisher": {
-      "@type": "Organization",
-      "name": "zenist-life",
-      "url": "https://zenist-life.net",
-    },
+    "@graph": graph,
   };
 }
 
