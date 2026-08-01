@@ -53,7 +53,7 @@ async function readAllPostFiles(): Promise<Post[]> {
 export async function getAllPosts(): Promise<Post[]> {
   const all = await readAllPostFiles();
   return all
-    .filter((p) => p.published && p.category !== "セッション")
+    .filter((p) => p.published && p.category !== "セッション" && p.category !== "寺子屋")
     .sort((a, b) => (a.date < b.date ? 1 : -1));
 }
 
@@ -65,6 +65,11 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
 export async function getSessionPage(): Promise<Post | null> {
   const all = await readAllPostFiles();
   return all.find((p) => p.published && p.category === "セッション") ?? null;
+}
+
+export async function getTerakoyaPage(): Promise<Post | null> {
+  const all = await readAllPostFiles();
+  return all.find((p) => p.published && p.category === "寺子屋") ?? null;
 }
 
 export async function getPostsBySeries(seriesName: string): Promise<Post[]> {
