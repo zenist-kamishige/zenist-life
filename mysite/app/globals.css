@@ -230,6 +230,33 @@ main { width: min(100%, 980px); margin: 0 auto; }
   color: var(--color-ink-muted);
 }
 
+/* ── ナマケモノの寺子屋バナー ── */
+#terakoya-banner {
+  padding: 40px 24px;
+  text-align: center;
+}
+.terakoya-banner-link {
+  display: inline-block;
+  max-width: 720px;
+  width: 100%;
+  text-decoration: none;
+  color: inherit;
+  transition: opacity 0.25s ease;
+}
+.terakoya-banner-link:hover { opacity: 0.85; }
+.terakoya-banner-image {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+.terakoya-banner-copy {
+  margin-top: 12px;
+  font-family: 'Noto Serif JP', serif;
+  font-size: 14px;
+  letter-spacing: 0.05em;
+  color: var(--color-ink);
+}
+
 /* ── ドームバナー ── */
 #dome-banner {
   background: var(--color-ink);
@@ -302,6 +329,8 @@ footer {
   #latest-posts { padding: 60px 16px; }
   #dome-banner { padding: 60px 16px; }
   .dome-title { font-size: 16px; }
+  #terakoya-banner { padding: 24px 16px; }
+  .terakoya-banner-copy { font-size: 12px; }
 }
 
 .catchcopy-btn {

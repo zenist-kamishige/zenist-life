@@ -39,6 +39,20 @@ export default async function Home() {
       </section>
 
       <KanjiMenu />
+
+      <section id="terakoya-banner" className="fade-in delay-2">
+        <Link href="/terakoya" className="terakoya-banner-link">
+          <Image
+            src="https://res.cloudinary.com/dxbqzksmh/image/upload/v1775285502/namakemono_wn0xdq.png"
+            alt="ナマケモノの寺子屋"
+            width={1200}
+            height={600}
+            className="terakoya-banner-image"
+          />
+          <p className="terakoya-banner-copy">自由に生きるための、大人が通う小学校 →</p>
+        </Link>
+      </section>
+
       <section id="all-posts-link" className="fade-in delay-2" style={{ textAlign: "center", padding: "2rem 0" }}>
         <Link href="/posts" className="all-posts-btn">
           記事一覧はこちら →
