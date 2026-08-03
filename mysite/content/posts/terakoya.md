@@ -4,7 +4,6 @@ slug: terakoya
 category: 寺子屋
 date: 2026-07-30
 description: 福岡県古賀市を中心に開催しているカフェ会です。コンセプトは自由に生きるための大人が通う小学校。テーマなし、教師なし、正解なし。ただ、自由に話しあう場所がナマケモノの寺子屋です。
-thumbnail: https://res.cloudinary.com/dxbqzksmh/image/upload/v1775285502/namakemono_wn0xdq.png
 published: true
 ---
 

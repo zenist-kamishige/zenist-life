@@ -38,8 +38,6 @@ export default async function Home() {
         </div>
       </section>
 
-      <KanjiMenu />
-
       <section id="terakoya-banner" className="fade-in delay-2">
         <Link href="/terakoya" className="terakoya-banner-link">
           <Image
@@ -53,6 +51,7 @@ export default async function Home() {
         </Link>
       </section>
 
+      <KanjiMenu />
       <section id="all-posts-link" className="fade-in delay-2" style={{ textAlign: "center", padding: "2rem 0" }}>
         <Link href="/posts" className="all-posts-btn">
           記事一覧はこちら →
