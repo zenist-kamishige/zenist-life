@@ -900,3 +900,13 @@ footer {
   line-height: 1.8;
 }
 }
+
+.article-body .article-bullet-list {
+  list-style-type: disc;
+  margin: 0.5rem 0 1.2rem 0;
+  padding-left: 2em;
+}
+.article-body .article-bullet-item {
+  margin-bottom: 0.4rem;
+  line-height: 1.8;
+}
