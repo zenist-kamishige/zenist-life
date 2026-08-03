@@ -17,7 +17,7 @@ import type { NextConfig } from "next";
           permanent: true,
         },
         {
-          source: "/:slug((?!posts|about|asobu|nagomu|shira|toku|session|dome|_next)[^./]+)",
+          source: "/:slug((?!posts|about|asobu|nagomu|shira|toku|session|dome|terakoya|_next)[^./]+)",
           destination: "/posts/:slug",
           permanent: true,
         },                                                                                                                                                                                

@@ -136,7 +136,7 @@ published: true
 現在はFBでの告知がメインです。開催日を知りたいかたはFBのフォローをお願いします。
 
 FBグループ「ナマケモノの寺子屋」
-https://www.facebook.com/namakemonoTerakoya
+[https://www.facebook.com/namakemonoTerakoya](https://www.facebook.com/namakemonoTerakoya)
 
 興味を持ってくださった方はLINEでもお声がけください。
-https://lin.ee/Xqql7pZ
+[https://lin.ee/Xqql7pZ](https://lin.ee/Xqql7pZ)
