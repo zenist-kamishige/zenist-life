@@ -11,7 +11,7 @@ export default async function sitemap() {
 
   const kbUrls = kbEntries.map((entry) => ({
     url: `https://zenist-life.net/kb/${entry.slug}`,
-    lastModified: entry.date || new Date().toISOString(),
+    lastModified: entry.updated || entry.date || new Date().toISOString(),
   }));
 
   return [
