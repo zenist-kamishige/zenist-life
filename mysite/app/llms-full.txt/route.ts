@@ -11,7 +11,7 @@ export async function GET() {
 URL: https://zenist-life.net/kb/${e.slug}
 公開日: ${e.date}
 
-${e.content}
+${e.content.replace(/\]\(\/kb\//g, "](https://zenist-life.net/kb/")}
 `,
   );
 

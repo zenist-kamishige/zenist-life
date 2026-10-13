@@ -35,6 +35,13 @@ function generateJsonLd(entry: {
   faq: { q: string; a: string }[];
 }) {
   const url = `https://zenist-life.net/kb/${entry.slug}`;
+  const relatedLinks = Array.from(
+    new Set(
+      Array.from(entry.content.matchAll(/\]\(\/kb\/(kb-\d+)\)/g), (m) => m[1])
+        .filter((slug) => slug !== entry.slug)
+        .map((slug) => `https://zenist-life.net/kb/${slug}`),
+    ),
+  );
   const publisher = {
     "@type": "Organization",
     "name": "zenist-life",
@@ -83,6 +90,7 @@ function generateJsonLd(entry: {
         "name": "zenist-life",
         "url": "https://zenist-life.net",
       },
+      ...(relatedLinks.length > 0 && { "relatedLink": relatedLinks }),
     },
   ];
 
