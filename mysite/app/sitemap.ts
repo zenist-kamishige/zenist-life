@@ -19,6 +19,7 @@ export default async function sitemap() {
     { url: "https://zenist-life.net/about", lastModified: new Date() },
     { url: "https://zenist-life.net/session", lastModified: new Date() },
     { url: "https://zenist-life.net/terakoya", lastModified: new Date() },
+    { url: "https://zenist-life.net/kome", lastModified: new Date() },
     { url: "https://zenist-life.net/shira", lastModified: new Date() },
     { url: "https://zenist-life.net/toku", lastModified: new Date() },
     { url: "https://zenist-life.net/asobu", lastModified: new Date() },
