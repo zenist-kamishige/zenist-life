@@ -7,7 +7,7 @@ description: 福岡県宗像市で、農薬も肥料も使わずに育てた2026
 published: true
 ---
 
-![みんなちがって みんないいのつくりかた](/kome/mintiga-top.jpg)
+![田んぼのあぜにならぶキャラクターたち](/kome/mintiga-top.jpg?v=2)
 
 福岡の宗像市で、田んぼを4反ほどやっています。
 
