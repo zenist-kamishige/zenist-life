@@ -123,20 +123,23 @@ published: true
 
 ## 開催情報
 
-開催日：FBグループで確認ください
+毎週、2か所でひらいています。
+
+- **水曜 19:00〜** 赤間（宗像市）
+- **日曜 11:00〜** 天神（福岡市）
+
 時間：１時間ほど
 参加費：1000円（お飲み物代別）
+
+## 参加のしかた
+
+インスタグラムのDM、またはFBグループから「〇日の寺子屋に参加します」と送ってください。お店の場所は、そのときにお伝えします。
+
+- インスタグラム：[https://www.instagram.com/tamasora_kamishige](https://www.instagram.com/tamasora_kamishige)
+- FBグループ「ナマケモノの寺子屋」：[https://www.facebook.com/namakemonoTerakoya](https://www.facebook.com/namakemonoTerakoya)
 
 **注意事項**
 - ドタキャンはなるべくしないで
 - なにかに勧誘はしないで
 - 連絡先の交換は自己責任でおねがいします
 - その他、みんなが楽しめるようご協力おねがいします
-
-現在はFBでの告知がメインです。開催日を知りたいかたはFBのフォローをお願いします。
-
-FBグループ「ナマケモノの寺子屋」
-[https://www.facebook.com/namakemonoTerakoya](https://www.facebook.com/namakemonoTerakoya)
-
-興味を持ってくださった方はLINEでもお声がけください。
-[https://lin.ee/Xqql7pZ](https://lin.ee/Xqql7pZ)
